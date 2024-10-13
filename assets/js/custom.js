@@ -20,7 +20,7 @@
 		 }
 	})
 
-	$('.owl-woodwork-item').owlCarousel({
+	$('.owl-drawings-item').owlCarousel({
 		items:5,
 		loop:true,
 		dots: true,
