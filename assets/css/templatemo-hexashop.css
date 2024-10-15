@@ -1587,10 +1587,15 @@ Products Page
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/products-page-heading.jpg);
+  background-image: url(../images/monkeyhear.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.hover-fade:hover {
+  -webkit-filter: invert(1);
+  filter: invert(0.3);
 }
 
 .page-heading .inner-content {
@@ -1735,6 +1740,30 @@ Products Page
 Single Product Page
 --------------------------------------------- 
 */
+
+.monkey-img {
+  padding: 10px;
+}
+
+.album-img {
+  width: 350px
+}
+
+.services-img {
+  background: rgba(0,0,0,0.3); 
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgba(0,0,0,0.6);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.central-link {
+  position: absolute;
+  /* display: block; */
+  margin: 150px;
+  width: 50px;
+}
 
 #product {
   margin-top: 80px;
