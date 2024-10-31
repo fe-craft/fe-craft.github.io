@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
     <title>Fë Craft</title>
 
+    <link rel="icon" type="image/png" href="assets/images/AP-LOGO-ROUND.png" />
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -23,14 +25,14 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
 
-    <script type="text/javascript"  src="https://code.jquery.com/jquery-3.2.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" type="text/javascript"></script>
 
     <!--SOUNDCLOUD API -->
     <script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
 
     <!--- Sliders -->
-    <script type="text/javascript"  src="assets/js/jquery.nouislider.min.js"></script>
-    <script type="text/javascript"  src="assets/js/jquery.nouislider.min2.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nouislider.min2.js"></script>
     <link rel="stylesheet" href="assets/css/nouislider.css" />
 
     <!-- PLAYER JAVASCRIPT -->
@@ -40,10 +42,10 @@
     <link rel="stylesheet" try href="assets/css/player.css" type="text/css" media="screen" />
 
 
-    </head>
-    
-    <body onload="checkGET()">
-    
+</head>
+
+<body onload="onBodyLoad()">
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -51,10 +53,10 @@
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -87,11 +89,12 @@
                                     <li><a href="#">Features Page 1</a></li>
                                     <li><a href="#">Features Page 2</a></li>
                                     <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
+                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template
+                                            Page 4</a></li>
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        </ul>        
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -102,57 +105,60 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-        <div id="player-bottom-wrapper">
-            <div id="middle">
-                <div id="current_playlist">
-                    <div id="current_playlist_header">
-                        <div id="current_playlist_close"></div>
-                        <div class="current_playlist_header_item"></div>
-                    </div>
-                    <iframe id="so" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                    <!-- <iframe id="so" width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F1711002&amp;show_artwork=true&amp;color=000000&amp;auto_play=false"></iframe> -->
+    <div id="player-bottom-wrapper">
+        <div id="middle">
+            <div id="current_playlist">
+                <div id="current_playlist_header">
+                    <div id="current_playlist_close"></div>
+                    <div class="current_playlist_header_item"></div>
                 </div>
-                <div id="bottom">
-                    <div id="bottom_controls">
-                        <div id="prev_button" class="controls_button"></div>
-                        <div id="playpause">
-                            <div id="play_button" button class="play_button controls_button" style="display:block" ></div>
-                            <div id="pause_button" button class="play_button controls_button" style="display:none" ></div>
+                <iframe id="so" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1898537379&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <!-- <iframe id="so" width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F1711002&amp;show_artwork=true&amp;color=000000&amp;auto_play=false"></iframe> -->
+            </div>
+            <div id="bottom">
+                <div id="bottom_controls">
+                    <div id="prev_button" class="controls_button"></div>
+                    <div id="playpause">
+                        <div id="play_button" button class="play_button controls_button" style="display:block"></div>
+                        <div id="pause_button" button class="play_button controls_button" style="display:none"></div>
+                    </div>
+                    <div id="next_button" class="controls_button"></div>
+                </div>
+                <div id="volume">
+                    <div id="volume_speaker" class="volume_on"></div>
+                    <div id="volume_back"></div>
+                </div>
+                <div id="display">
+                    <div class="display_song_container">
+                        <div id="display_coverart"></div>
+                        <div id="display_text">
+                            <a id="display_song"></a>
                         </div>
-                        <div id="next_button" class="controls_button"></div>
-                    </div>
-                    <div id="volume">
-                        <div id="volume_speaker" class="volume_on"></div>
-                        <div id="volume_back"></div>
-                    </div>
-                    <div id="display">
-                        <div class="display_song_container">
-                            <div id="display_coverart"></div>
-                            <div id="display_text">
-                                <a id="display_song"></a>
+                        <div id="display_time">
+                            <div id="display_time_count">0:00</div>
+                            <div id="display_progress">
+                                <div id="display_progress_loading"></div>
                             </div>
-                            <div id="display_time">
-                                <div id="display_time_count">0:00</div>
-                                <div id="display_progress"><div id="display_progress_loading"></div></div>
-                                <div id="display_time_total"></div>
-                            </div>
+                            <div id="display_time_total"></div>
                         </div>
                     </div>
-                    <div id="playlist_button"></div>
-                    <div id="top_button">
-                        <div id="top_text">TOP</div>
-                    </div>
+                </div>
+                <div id="playlist_button"></div>
+                <div id="top_button">
+                    <div id="top_text">TOP</div>
                 </div>
             </div>
         </div>
-    
+    </div>
+
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="inner-content" >
+                    <div class="inner-content">
                         <!-- <h2>Single Product Page</h2>
                         <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span> -->
                     </div>
@@ -161,69 +167,130 @@
         </div>
     </div>
     <!-- ***** Main Banner Area End ***** -->
-    
+
     <section class="section" id="product">
         <div class="container">
-            <div class="row">
-                            
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4>Sketches Vol 1</h4>
-                    <span class="price">December 2023</span>
-                    <!-- <a href="" onclick="play('https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true')"> -->
-                    <div>
-                        <a href="./music.html?https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-                        <img class="central-link hover-fade" src="assets/images/play.png" alt="hexashop ecommerce templatemo">
-                        </a>
-                        <img class="album-img" src="assets/images/sketchesVol1.jpg" alt="hexashop ecommerce templatemo">
-                    </div>
-                    <!-- </a> -->
-                    <!-- <button class="btn">play album</button> -->
-                    <br>
-                    <div class="d-flex flex-column justify-content-center">
-                        <p><b>Download</b> the album on <a href="https://mattalec.bandcamp.com/album/sketches-vol1">bandcamp</a>
-                            <br>
-                        <b>Listen</b> to the album on <a href="https://soundcloud.com/fe-musique/sets/sketches-vol11">soundcloud</a></p>
-                        <div class="d-flex flex-row justify-content-center"><a href="https://mattalec.bandcamp.com/album/sketches-vol1"><img class="logo-img hover-fade" alt="bandcamp" src="assets/images/bandcampLogo.png"></a>
-                            &nbsp;&nbsp;&nbsp;
-                        <a href="https://soundcloud.com/fe-musique/sets/sketches-vol1"><img class="logo-img hover-fade" style="height: 55px; margin-top: 20px" alt="soundcloud" src="assets/images/soundcloud.png"></a>
-                    </div>
-                    </div>
-                    
-                </div>
+            <div class="row d-flex justify-content-around col-12">
+                <div
+                    style="position: absolute; display: block; width: 100vw; height: 5px; margin-top: -25px; background-color: rgba(0,0,0,0.3);">
+                    &nbsp;</div>
+                <div><a href="https://soundcloud.com/fe-musique/"><img class="logo-img hover-fade" style="height: 55px;"
+                            alt="https://soundcloud.com/fe-musique/" src="assets/images/soundcloud.png"></a></div>
+                <div><a href="https://www.youtube.com/channel/UCADBia80hXv095DxFyzZzJw"><img class="logo-img hover-fade"
+                            style="height: 55px;" alt="soundcloud" src="assets/images/youtube.png"></a></div>
+                <div><a href="https://mattalec.bandcamp.com/"><img class="logo-img hover-fade"
+                            style="height: 80px; margin-top: -10px;" alt="https://mattalec.bandcamp.com/"
+                            src="assets/images/bandcampLogo.png"></a></div>
+                <div
+                    style="position: absolute; display: block; width: 100vw; height: 5px; margin-top: 75px; background-color: rgba(0,0,0,0.3);">
+                    &nbsp;</div>
+
             </div>
-            <div class="col-lg-4">
+            <div class="row" style="height: 50px;"></div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="right-content">
+                        <h4>Sketches Vol 1</h4>
+                        <span class="price">December 2023</span>
+                        <div>
+                            <a
+                                href="./music.html?https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                                <img class="central-link hover-fade" style="background-color: rgba(0,0,0,0);"
+                                    src="assets/images/play.png" alt="hexashop ecommerce templatemo">
+                            </a>
+                            <img class="album-img" src="assets/images/sketchesVol1.jpg"
+                                alt="hexashop ecommerce templatemo">
+                        </div>
+                        <!-- </a> -->
+                        <!-- <button class="btn">play album</button> -->
+                        <br>
+                        <div class="d-flex flex-column justify-content-center">
+                            <div class="d-flex flex-row justify-content-around">
+                                <a href="https://soundcloud.com/fe-musique/sets/sketches-vol1"><img
+                                        class="logo-img hover-fade" style="height: 40px; margin-top: 20px"
+                                        alt="soundcloud" src="assets/images/soundcloud.png"></a>
+                                <a
+                                    href="https://www.youtube.com/watch?v=cpRr8fmsMJk&list=PLXaRTevLNShwG1QHfyBoW9sUgWVqFs6pj"><img
+                                        class="logo-img hover-fade"
+                                        style="height: 40px; margin-top: 20px; margin-right: 10px" alt="youtube"
+                                        src="assets/images/youtube.png"></a>
+                                <a href="https://mattalec.bandcamp.com/album/sketches-vol1"><img
+                                        class="logo-img hover-fade"
+                                        style="height: 60px; margin-top: 10px; padding-right: 20px" alt="bandcamp"
+                                        src="assets/images/bandcampLogo.png"></a>
+                            </div>
+                            <p>
+                                <b>Listen</b> to the album on <a
+                                    href="https://soundcloud.com/fe-musique/sets/sketches-vol11">soundcloud</a>
+                                <br>
+                                <b>Listen</b> to the album on <a
+                                    href="https://www.youtube.com/watch?v=cpRr8fmsMJk&list=PLXaRTevLNShwG1QHfyBoW9sUgWVqFs6pj">youtube</a>
+                                <br>
+                                <b>Download</b> the album on <a
+                                    href="https://mattalec.bandcamp.com/album/sketches-vol1">bandcamp</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
                 <div class="right-content">
                     <h4>Sketches Vol 2</h4>
-                    <span class="price">December 2024</span>
-                    <img class="album-img" src="assets/images/sketchesVol1.jpg" alt="hexashop ecommerce templatemo">
-                    <button class="btn">play album</button>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="right-content">
-                    <h4>Sheet Music</h4>
-                    <span class="price">chord sheets and full scores</span>
+                    <span class="price">November 2024</span>
                     <div>
-                        <!-- <a href="./music.html?https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-                        <img class="central-link hover-fade" src="assets/images/play.png" alt="hexashop ecommerce templatemo">
-                        </a> -->
-                        <a href="./sheetmusic.html" >
-                            <img class="central-link hover-fade" src="assets/images/open.png" alt="hexashop ecommerce templatemo">
-                        <img class="album-img" src="assets/images/score.png" alt="sheet music">
+                        <a
+                            href="./music.html?https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1898537379&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                            <img class="central-link hover-fade" style="background-color: rgba(0,0,0,0);"
+                                src="assets/images/play.png" alt="hexashop ecommerce templatemo">
                         </a>
+                        <img class="album-img" src="assets/images/sketchesVol2.png" alt="hexashop ecommerce templatemo">
                     </div>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor incididunt ut labore.</span>
-                    <div class="quote">
-                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+
+                    <br>
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex flex-row justify-content-around">
+                            <a href="https://soundcloud.com/fe-musique/sets/sketches-vol1"><img
+                                    class="logo-img hover-fade" style="height: 40px; margin-top: 20px" alt="soundcloud"
+                                    src="assets/images/soundcloud.png"></a>
+                            <a
+                                href="https://www.youtube.com/watch?v=cpRr8fmsMJk&list=PLXaRTevLNShwG1QHfyBoW9sUgWVqFs6pj"><img
+                                    class="logo-img hover-fade"
+                                    style="height: 40px; margin-top: 20px; margin-right: 10px" alt="youtube"
+                                    src="assets/images/youtube.png"></a>
+                            <a href="https://mattalec.bandcamp.com/album/sketches-vol1"><img class="logo-img hover-fade"
+                                    style="height: 60px; margin-top: 10px; padding-right: 20px" alt="bandcamp"
+                                    src="assets/images/bandcampLogo.png"></a>
+                        </div>
+                        <p>
+                            <b>Listen</b> to the album on <a
+                                href="https://soundcloud.com/fe-musique/sets/sketches-vol2">soundcloud</a>
+                            <br>
+                            <b>Listen</b> to the album on <a
+                                href="https://www.youtube.com/watch?v=cpRr8fmsMJk&list=PLXaRTevLNShwG1QHfyBoW9sUgWVqFs6pj">youtube</a>
+                            <br>
+                            <b>Download</b> the album on <a
+                                href="https://mattalec.bandcamp.com/album/sketches-vol2">bandcamp</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="right-content">
+                        <h4>Sheet Music</h4>
+                        <span class="price">chord sheets and full scores</span>
+                            <a href="./sheetmusic.html">
+                                <img class="central-link hover-fade" src="assets/images/open.png"
+                                    alt="hexashop ecommerce templatemo">
+                                <img class="album-img" src="assets/images/score.png" alt="sheet music">
+                            </a>
+                        </div>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod kon tempor
+                            incididunt ut labore.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -234,11 +301,12 @@
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img class="logo-img" src="assets/images/logoInvert.png" alt="hexashop ecommerce templatemo">
+                            <img class="logo-img" src="assets/images/logoInvert.png"
+                                alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
                             <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
-                            <li><a href="#">hexashop@company.com</a></li>
+                            <li><a href="#">fecraftings@gmail.com</a></li>
                             <li><a href="#">010-020-0340</a></li>
                         </ul>
                     </div>
@@ -271,9 +339,11 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="under-footer">
-                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved. 
-                        
-                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
+
+                            <br>Design: <a href="https://templatemo.com" target="_parent"
+                                title="free css templates">TemplateMo</a>
+                        </p>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -285,7 +355,7 @@
             </div>
         </div>
     </footer>
-    
+
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
@@ -301,41 +371,48 @@
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/isotope.js"></script>
     <script src="assets/js/quantity.js"></script>
-    
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
+    <script src="https://unpkg.com/pdfobject"></script>
+
     <script>
 
-        $(function() {
+        $(function () {
             var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
             });
         });
+
+        function onBodyLoad() {
+            checkGET();
+        }
 
         function checkGET() {
             var url = window.location.search.substr(1);
             if (url.length === 0) {
                 // set default to sketches vol 1
-                url = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1743141642&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                url = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1898537379&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
             }
             document.getElementById('so').src = url;
         }
+
     </script>
 
-  </body>
+</body>
 
 </html>

@@ -1764,34 +1764,35 @@ Single Product Page
 }
 
 .album-img {
-  width: 350px
+  object-fit: cover;
+  width: 800px;
+  max-width: 350px;
+  max-height:350px;
+  overflow: hidden;
+  object-position: 25% top;
+
 }
 
 .services-img {
   background: rgba(0,0,0,0.5); 
   border-radius: 5px;
-  /* background-image: url(assets/images/slate.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 
 .services-header {
   font-size: 110px;
   line-height: 120px;
-  /* font-weight: bold; */
   color: rgba(255,255,255,0.8);
-  
-  /* -webkit-text-stroke-width: 0.1px; 
-  -webkit-text-stroke-color: rgba(0,0,0,1); */
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .central-link {
   position: absolute;
   /* display: block; */
-  margin: 150px;
-  width: 50px;
+  margin: 125px;
+  width: 100px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 5px;
+  padding: 15px;
 }
 
 #product {
@@ -1984,7 +1985,7 @@ About Us Page
 .about-page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
-  background-image: url(../images/about-us-page-heading.jpg);
+  background-image: url(../images/monkey.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
