@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
@@ -19,6 +21,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
         .header {
             background-color: #333;
             color: #fff;
@@ -26,37 +29,47 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
         .session-table {
             width: 100%;
             border-collapse: collapse;
             background-color: #fff;
         }
-        .session-table th, 
+
+        .session-table th,
         .session-table td {
             border: 1px solid #ddd;
             padding: 15px;
             text-align: left;
         }
+
         .session-table th {
             background-color: #f4f4f4;
         }
+
         .time-column {
-            width: 30%;
+            width: 15%;
             font-weight: bold;
         }
+
         .type-column {
-            width: 70%;
+            width: 85%;
         }
-        @media print, screen and (max-width: 768px) {
+
+        @media print,
+        screen and (max-width: 768px) {
             body {
                 padding: 10px;
             }
-            .header, .session-table {
+
+            .header,
+            .session-table {
                 font-size: 14px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1 id="sessionTitle">Session for Activity</h1>
@@ -79,113 +92,193 @@
         const activityLists = {
             drawing: {
                 play: [
-                    "Doodle freely", 
-                    "Sketch random objects", 
-                    "Draw from imagination", 
-                    "Blind contour drawing", 
-                    "Collaborative drawing game"
+
+                    "Draw the Aviary alongside book"
+                    ,
+                    "Sketch random objects in room",
+                    "Draw a previous creature from imagination",
+                    "Draw Plant alongside Book",
+                    "Draw Insect alongside Book",
+                    "Draw Bone Structure alongside Book",
+                    "Draw Gesture alongside Book",
+                    "Draw Land Animal alongside Book",
+                    "Draw Marine alongside Book",
+                    "Draw Face with reference",
+                    "Draw expressive heads and shoulders from imagination",
+                    "Draw hands from imagination",
+                    "Draw skulls from imagination",
+                    "Draw manequins from imagination",
                 ],
                 practice: [
-                    "Study proportions", 
-                    "Practice perspective", 
-                    "Color theory exercise", 
-                    "Anatomy sketching", 
-                    "Technique refinement"
+                    [
+                        "Drawing Exercise Lvl1",
+                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
+                    ],
+                    [
+                        "Drawing Exercise Lvl2",
+                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
+                    ],
+                    [
+                        "Drawing Exercise Lvl3",
+                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
+                    ],
+                    [
+                        "Drawing Exercise Lvl4",
+                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
+                    ],
+                    [
+                        "Drawing Exercise Lvl5",
+                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
+                    ],
+
+                    "explore cross hatching and texture"
+                    ,
+
+                    "explore soluettes"
+
                 ]
             },
             guitar: {
                 play: [
-                    "Freestyle jam", 
-                    "Explore new chord progressions", 
-                    "Improvise melodies", 
-                    "Play by ear", 
-                    "Musical experimentation"
+                    "Song: Steep Road",
+                    "Song with vocals: Steep Road",
+                    [
+                        "Good Riddance",
+                        "https://www.justinguitar.com/songs/green-day-good-riddance-time-of-your-life-chords-tabs-guitar-lesson-sg-066"
+                    ],
+                    [
+                        "brown eyed girl",
+                        "https://www.justinguitar.com/songs/van-morrison-brown-eyed-girl-chords-tabs-guitar-lesson-bs-304#learn-more"
+                    ],
+                    ["Patience",
+                        "https://www.justinguitar.com/songs/guns-n-roses-patience-1-3-easy-chords-tabs-guitar-lesson-st-621"]
+
                 ],
                 practice: [
-                    "Scale exercises", 
-                    "Chord transition practice", 
-                    "Finger technique drills", 
-                    "Learn a new song section", 
+                    ["Strumming patterns at speed in 4/4",
+                        "https://www.justinguitar.com/guitar-lessons/the-strumming-pattern-b1-404"],
+                    "Strumming patterns at speed in 6/8",
+                    ["all down 8th note strumming",
+                        "https://www.justinguitar.com/guitar-lessons/all-down-8th-note-strumming-b2-805"],
+                    "Chord transition practice",
+                    "E minor pentatonic with muting",
+                    "Learn a new song section",
                     "Rhythm precision training"
                 ]
             },
             piano: {
                 play: [
-                    "Free improvisation", 
-                    "Create a simple melody", 
-                    "Explore different rhythms", 
-                    "Play without sheet music", 
-                    "Experimental sound creation"
+                    ["Song: Shan's Mood",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/2147575760/posts/16289729"
+                    ],
+                    ["Song: I can't Beleive That You're In Love With Me",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3558162/posts/11358218"
+                    ],
+                    [
+                        "Song: This Love Of Mine",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3558029/posts/11358157"
+                    ],
+                    [
+                        "Song: Falling In Love With Love",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3558162/posts/11358218"
+                    ],
+                    [
+                        "Song: I'm In The Mood For Love",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3557805/posts/11357949"
+                    ],
+                    [
+                        "Song: Fly Me To The Moon",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3557079/posts/11357434"
+                    ],
+                    [
+                        "Song: Autumn Leaves",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3557077/posts/11357433"
+                    ],
+                    ["Song With Lead: Autumn Leaves",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3557077/posts/11357433"
+                    ]
                 ],
                 practice: [
-                    "Scales and arpeggios", 
-                    "Sight-reading practice", 
-                    "Technique exercises", 
-                    "Chord progression study", 
-                    "Finger strength training"
+                    [
+                        "Inversions Practice",
+                        "https://www.jazzskills.com/products/members-area/categories/2153428453/posts/2185299134"
+                    ],
+                    [
+                        "Progressions Summary",
+                        "https://www.jazzskills.com/products/developing-fluency/categories/2147570802/posts/11278365"
+                    ],
+
+                    ["Rhythm Practice ",
+                        "https://www.jazzskills.com/products/members-area/categories/2148228334/posts/2169863863"]
+
                 ]
             },
             comics: {
                 play: [
-                    "Character brainstorming", 
-                    "Spontaneous story sketching", 
-                    "Freestyle panel layout", 
-                    "Doodle character interactions", 
-                    "Creative world-building"
+                    "Character brainstorming",
+                    "Spontaneous story board sketching",
+                    "Add an object to a world",
+                    "Interaction brainstorm",
+                    "Creative writing for world-building",
+                    "draw a 4 panel comic",
+                    "title page for comic"
                 ],
                 practice: [
-                    "Perspective practice", 
-                    "Character design refinement", 
-                    "Panel composition study", 
-                    "Storytelling techniques", 
+                    "Simple Ideas for a comic",
+                    "Thumbnail and rough expression of a prior idea",
+                    "title page thumbnail for comic",
+                    "drawing thumbnail scene from different angles",
+                    "pacing, how little words can you add",
+                    "pacing, how many words can you add",
+                    "effect of panel shape and placement",
                     "Inking and shading exercise"
                 ]
             },
             composition: {
                 play: [
-                    "Free musical exploration", 
-                    "Experimental sound mixing", 
-                    "Create a random melody", 
-                    "Improvise with different instruments", 
+                    "Free musical exploration",
+                    "Experimental sound mixing",
+                    "Create a random melody",
+                    "Improvise with different instruments",
                     "Sound texture experimentation"
                 ],
                 practice: [
-                    "Harmony study", 
-                    "Rhythm pattern development", 
-                    "Orchestration techniques", 
-                    "Melodic variation exercises", 
+                    "Harmony study",
+                    "Rhythm pattern development",
+                    "Orchestration techniques",
+                    "Melodic variation exercises",
                     "Composition structure analysis"
                 ]
             },
             singing: {
                 play: [
-                    "Vocal improvisation", 
-                    "Explore vocal range", 
-                    "Sing without constraints", 
-                    "Create vocal sounds", 
+                    "Vocal improvisation",
+                    "Explore vocal range",
+                    "Sing without constraints",
+                    "Create vocal sounds",
                     "Emotion-based singing"
                 ],
                 practice: [
-                    "Breathing techniques", 
-                    "Pitch precision exercises", 
-                    "Vocal warm-ups", 
-                    "Articulation practice", 
+                    "Breathing techniques",
+                    "Pitch precision exercises",
+                    "Vocal warm-ups",
+                    "Articulation practice",
                     "Range expansion drills"
                 ]
             },
             rap: {
                 play: [
-                    "Freestyle rap", 
-                    "Rhythm exploration", 
-                    "Word association game", 
-                    "Spontaneous rhyming", 
+                    "Freestyle rap",
+                    "Rhythm exploration",
+                    "Word association game",
+                    "Spontaneous rhyming",
                     "Flow experimentation"
                 ],
                 practice: [
-                    "Breath control", 
-                    "Rhyme scheme study", 
-                    "Pronunciation clarity", 
-                    "Rhythm precision", 
+                    "Breath control",
+                    "Rhyme scheme study",
+                    "Pronunciation clarity",
+                    "Rhythm precision",
                     "Lyric writing techniques"
                 ]
             }
@@ -200,10 +293,10 @@
             // Set session title
             const sessionTitle = document.getElementById('sessionTitle');
             const totalTimeEl = document.getElementById('totalTime');
-            
+
             // Calculate total time
             const totalMinutes = blocks.length * 10;
-            
+
             sessionTitle.textContent = `Session for ${activity.charAt(0).toUpperCase() + activity.slice(1)}`;
             totalTimeEl.textContent = `Total Session Time: ${totalMinutes} minutes`;
 
@@ -217,20 +310,32 @@
             blocks.forEach((type, index) => {
                 // Calculate block start time
                 const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
-                
+
                 // Get a random activity for the block
                 let specificActivity = 'Default Activity';
                 if (activityLists[activity] && activityLists[activity][type]) {
                     const possibleActivities = activityLists[activity][type];
                     specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
                 }
+                console.log(specificActivity);
+                let activityContent = '';
+                if (Array.isArray(specificActivity)) {
+                    const [text, url] = specificActivity;
+                    console.log(url);
+                    activityContent = `<a href="${url}" target="_blank">${text}</a>`;
+                } else {
+                    activityContent = specificActivity;
+                }
+
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td class="time-column">${blockStartTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
+                    <td class="time-column">
+                        ${blockStartTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </td>
                     <td class="type-column">
                         <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>: 
-                        ${specificActivity}
+                        ${activityContent}
                     </td>
                 `;
                 sessionBlocksEl.appendChild(row);
@@ -238,4 +343,5 @@
         });
     </script>
 </body>
+
 </html>
