@@ -317,12 +317,16 @@
                     const possibleActivities = activityLists[activity][type];
                     specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
                 }
-                console.log(specificActivity);
                 let activityContent = '';
                 if (Array.isArray(specificActivity)) {
                     const [text, url] = specificActivity;
                     console.log(url);
                     activityContent = `<a href="${url}" target="_blank">${text}</a>`;
+                    if (activity === "piano") {
+                        const randomLetters = ["C", "F", "G", "Bb", "Eb"];
+                        const randomLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+                        activityContent += ` (${randomLetter})`;
+                    }
                 } else {
                     activityContent = specificActivity;
                 }
