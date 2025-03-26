@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .session-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        .session-table th, 
+        .session-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .session-table th {
+            background-color: #f4f4f4;
+        }
+        .time-column {
+            width: 30%;
+            font-weight: bold;
+        }
+        .type-column {
+            width: 70%;
+        }
+        @media print, screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .header, .session-table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="sessionTitle">Session for Activity</h1>
+        <div id="currentDateTime"></div>
+        <div id="totalTime"></div>
+    </div>
+
+    <table class="session-table">
+        <thead>
+            <tr>
+                <th class="time-column">Time</th>
+                <th class="type-column">Block Details</th>
+            </tr>
+        </thead>
+        <tbody id="sessionBlocks"></tbody>
+    </table>
+
+    <script>
+        // Activity-specific lists of potential activities
+        const activityLists = {
+            drawing: {
+                play: [
+                    "Doodle freely", 
+                    "Sketch random objects", 
+                    "Draw from imagination", 
+                    "Blind contour drawing", 
+                    "Collaborative drawing game"
+                ],
+                practice: [
+                    "Study proportions", 
+                    "Practice perspective", 
+                    "Color theory exercise", 
+                    "Anatomy sketching", 
+                    "Technique refinement"
+                ]
+            },
+            guitar: {
+                play: [
+                    "Freestyle jam", 
+                    "Explore new chord progressions", 
+                    "Improvise melodies", 
+                    "Play by ear", 
+                    "Musical experimentation"
+                ],
+                practice: [
+                    "Scale exercises", 
+                    "Chord transition practice", 
+                    "Finger technique drills", 
+                    "Learn a new song section", 
+                    "Rhythm precision training"
+                ]
+            },
+            piano: {
+                play: [
+                    "Free improvisation", 
+                    "Create a simple melody", 
+                    "Explore different rhythms", 
+                    "Play without sheet music", 
+                    "Experimental sound creation"
+                ],
+                practice: [
+                    "Scales and arpeggios", 
+                    "Sight-reading practice", 
+                    "Technique exercises", 
+                    "Chord progression study", 
+                    "Finger strength training"
+                ]
+            },
+            comics: {
+                play: [
+                    "Character brainstorming", 
+                    "Spontaneous story sketching", 
+                    "Freestyle panel layout", 
+                    "Doodle character interactions", 
+                    "Creative world-building"
+                ],
+                practice: [
+                    "Perspective practice", 
+                    "Character design refinement", 
+                    "Panel composition study", 
+                    "Storytelling techniques", 
+                    "Inking and shading exercise"
+                ]
+            },
+            composition: {
+                play: [
+                    "Free musical exploration", 
+                    "Experimental sound mixing", 
+                    "Create a random melody", 
+                    "Improvise with different instruments", 
+                    "Sound texture experimentation"
+                ],
+                practice: [
+                    "Harmony study", 
+                    "Rhythm pattern development", 
+                    "Orchestration techniques", 
+                    "Melodic variation exercises", 
+                    "Composition structure analysis"
+                ]
+            },
+            singing: {
+                play: [
+                    "Vocal improvisation", 
+                    "Explore vocal range", 
+                    "Sing without constraints", 
+                    "Create vocal sounds", 
+                    "Emotion-based singing"
+                ],
+                practice: [
+                    "Breathing techniques", 
+                    "Pitch precision exercises", 
+                    "Vocal warm-ups", 
+                    "Articulation practice", 
+                    "Range expansion drills"
+                ]
+            },
+            rap: {
+                play: [
+                    "Freestyle rap", 
+                    "Rhythm exploration", 
+                    "Word association game", 
+                    "Spontaneous rhyming", 
+                    "Flow experimentation"
+                ],
+                practice: [
+                    "Breath control", 
+                    "Rhyme scheme study", 
+                    "Pronunciation clarity", 
+                    "Rhythm precision", 
+                    "Lyric writing techniques"
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Parse URL parameters
+            const params = new URLSearchParams(window.location.search);
+            const activity = params.get('activity') || 'Unknown';
+            const blocks = (params.get('blocks') || '').split(',');
+
+            // Set session title
+            const sessionTitle = document.getElementById('sessionTitle');
+            const totalTimeEl = document.getElementById('totalTime');
+            
+            // Calculate total time
+            const totalMinutes = blocks.length * 10;
+            
+            sessionTitle.textContent = `Session for ${activity.charAt(0).toUpperCase() + activity.slice(1)}`;
+            totalTimeEl.textContent = `Total Session Time: ${totalMinutes} minutes`;
+
+            // Display current date and time
+            const currentDateTimeEl = document.getElementById('currentDateTime');
+            const now = new Date();
+            currentDateTimeEl.textContent = now.toLocaleString();
+
+            // Populate session blocks
+            const sessionBlocksEl = document.getElementById('sessionBlocks');
+            blocks.forEach((type, index) => {
+                // Calculate block start time
+                const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
+                
+                // Get a random activity for the block
+                let specificActivity = 'Default Activity';
+                if (activityLists[activity] && activityLists[activity][type]) {
+                    const possibleActivities = activityLists[activity][type];
+                    specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
+                }
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="time-column">${blockStartTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
+                    <td class="type-column">
+                        <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>: 
+                        ${specificActivity}
+                    </td>
+                `;
+                sessionBlocksEl.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

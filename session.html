@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Time Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        select {
+            appearance: none;
+            background-color: #fff;
+            border: 2px solid #333;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        select:focus {
+            border-color: #666;
+        }
+        #blockContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .timeBlock {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        .play { background-color: #a0d8ff; }
+        .practice { background-color: #b0ffa0; }
+        .explore { background-color: #ffa0a0; }
+        .rest { background-color: #f0f0f0; }
+        #legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .legendItem {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legendColor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #333;
+        }
+        #generateBtn {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #generateBtn:hover {
+            background-color: #555;
+        }
+        @media (max-width: 600px) {
+            #inputs {
+                flex-direction: column;
+            }
+            select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="inputs">
+        <select id="activity">
+            <option value="drawing">Drawing</option>
+            <option value="guitar">Guitar</option>
+            <option value="piano">Piano</option>
+            <option value="comics">Comics</option>
+            <option value="composition">Composition</option>
+            <option value="singing">Singing</option>
+            <option value="rap">Rap</option>
+        </select>
+        <select id="studyTime">
+            <option value="10">10 mins</option>
+            <option value="20">20 mins</option>
+            <option value="30">30 mins</option>
+            <option value="40">40 mins</option>
+            <option value="50">50 mins</option>
+            <option value="60">60 mins</option>
+            <option value="70">70 mins</option>
+            <option value="80">80 mins</option>
+            <option value="90">90 mins</option>
+            <option value="100">100 mins</option>
+            <option value="110">110 mins</option>
+            <option value="120">120 mins</option>
+            <option value="130">130 mins</option>
+            <option value="140">140 mins</option>
+            <option value="150">150 mins</option>
+            <option value="160">160 mins</option>
+            <option value="170">170 mins</option>
+            <option value="180">180 mins</option>
+        </select>
+    </div>
+
+    <div id="legend">
+        <div class="legendItem">
+            <div class="legendColor play"></div>
+            <span>Play</span>
+        </div>
+        <div class="legendItem">
+            <div class="legendColor practice"></div>
+            <span>Practice</span>
+        </div>
+        <div class="legendItem">
+            <div class="legendColor explore"></div>
+            <span>Explore</span>
+        </div>
+        <div class="legendItem">
+            <div class="legendColor rest"></div>
+            <span>Rest</span>
+        </div>
+    </div>
+
+    <div id="blockContainer"></div>
+
+    <button id="generateBtn">Generate Plan</button>
+
+    <script>
+        const blockContainer = document.getElementById('blockContainer');
+        const studyTimeInput = document.getElementById('studyTime');
+        const activityInput = document.getElementById('activity');
+        const generateBtn = document.getElementById('generateBtn');
+        let blocks = [];
+
+        function createBlocks() {
+            const studyTime = parseInt(studyTimeInput.value);
+            const activity = activityInput.value;
+            const blocksCount = studyTime / 10;
+
+            // Clear existing blocks
+            blockContainer.innerHTML = '';
+            blocks = [];
+
+            // Generate blocks based on study time
+            for (let i = 0; i < blocksCount; i++) {
+                const block = document.createElement('div');
+                block.classList.add('timeBlock');
+                block.classList.add('play');
+                block.dataset.type = 'play';
+                block.innerHTML = `
+                    <strong>${activity}</strong>
+                    ${i * 10}-${(i + 1) * 10} mins
+                `;
+                block.addEventListener('click', cycleBlockType);
+                blockContainer.appendChild(block);
+                blocks.push(block);
+            }
+        }
+
+        function cycleBlockType(event) {
+            const block = event.target.closest('.timeBlock');
+            const types = ['play', 'practice', 'explore', 'rest'];
+            const currentTypeIndex = types.indexOf(block.dataset.type);
+            const nextTypeIndex = (currentTypeIndex + 1) % types.length;
+            
+            block.dataset.type = types[nextTypeIndex];
+            block.className = `timeBlock ${types[nextTypeIndex]}`;
+        }
+
+        function generatePlan() {
+            if (blocks.length === 0) {
+                alert('Please select a study time first');
+                return;
+            }
+
+            const activity = activityInput.value;
+            const blockTypes = blocks.map(block => block.dataset.type);
+            
+            // Construct query string
+            const queryParams = new URLSearchParams({
+                activity: activity,
+                blocks: blockTypes.join(',')
+            });
+
+            // Redirect to a new page with GET variables
+            window.location.href = `sessionplan.html?${queryParams.toString()}`;
+        }
+
+        // Create blocks when study time changes
+        studyTimeInput.addEventListener('change', createBlocks);
+
+        // Generate plan button
+        generateBtn.addEventListener('click', generatePlan);
+    </script>
+</body>
+</html>
