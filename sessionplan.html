@@ -92,9 +92,7 @@
         const activityLists = {
             drawing: {
                 play: [
-
-                    "Draw the Aviary alongside book"
-                    ,
+                    "Draw the Aviary alongside book",
                     "Sketch random objects in room",
                     "Draw a previous creature from imagination",
                     "Draw Plant alongside Book",
@@ -130,18 +128,16 @@
                         "Drawing Exercise Lvl5",
                         "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
                     ],
-
-                    "explore cross hatching and texture"
-                    ,
-
-                    "explore soluettes"
+                    "explore cross hatching for lighting and texture",
+                    "explore soluettes for buildings",
+                    "explore soluettes for characters",
+                    "explore soluettes for scenery/ nature"
 
                 ]
             },
             guitar: {
                 play: [
                     "Song: Steep Road",
-                    "Song with vocals: Steep Road",
                     [
                         "Good Riddance",
                         "https://www.justinguitar.com/songs/green-day-good-riddance-time-of-your-life-chords-tabs-guitar-lesson-sg-066"
@@ -150,28 +146,38 @@
                         "brown eyed girl",
                         "https://www.justinguitar.com/songs/van-morrison-brown-eyed-girl-chords-tabs-guitar-lesson-bs-304#learn-more"
                     ],
-                    ["Patience",
-                        "https://www.justinguitar.com/songs/guns-n-roses-patience-1-3-easy-chords-tabs-guitar-lesson-st-621"]
-
+                    [
+                        "Patience",
+                        "https://www.justinguitar.com/songs/guns-n-roses-patience-1-3-easy-chords-tabs-guitar-lesson-st-621"
+                    ]
                 ],
                 practice: [
-                    ["Strumming patterns at speed in 4/4",
-                        "https://www.justinguitar.com/guitar-lessons/the-strumming-pattern-b1-404"],
-                    "Strumming patterns at speed in 6/8",
-                    ["all down 8th note strumming",
-                        "https://www.justinguitar.com/guitar-lessons/all-down-8th-note-strumming-b2-805"],
-                    "Chord transition practice",
+                    [
+                        "Strumming patterns at speed in 4/4",
+                        "https://www.justinguitar.com/guitar-lessons/the-strumming-pattern-b1-404"
+                    ],
+                    [
+                        "C major scale",
+                        "https://www.justinguitar.com/guitar-lessons/c-major-scale-b2-905"
+                    ],
+                    [
+                        "all down 8th note strumming",
+                        "https://www.justinguitar.com/guitar-lessons/all-down-8th-note-strumming-b2-805"
+                    ],
+                    "Chord transition practice Muting inbetween",
                     "E minor pentatonic with muting",
-                    "Learn a new song section",
-                    "Rhythm precision training"
+                    "Strumming patterns at speed in 6/8",
+                    "Add to chord book/ charts"
                 ]
             },
             piano: {
                 play: [
-                    ["Song: Shan's Mood",
+                    [
+                        "Song: Shan's Mood",
                         "https://www.jazzskills.com/products/developing-fluency/categories/2147575760/posts/16289729"
                     ],
-                    ["Song: I can't Beleive That You're In Love With Me",
+                    [
+                        "Song: I can't Beleive That You're In Love With Me",
                         "https://www.jazzskills.com/products/developing-fluency/categories/3558162/posts/11358218"
                     ],
                     [
@@ -180,7 +186,7 @@
                     ],
                     [
                         "Song: Falling In Love With Love",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3558162/posts/11358218"
+                        "https://www.jazzskills.com/products/developing-fluency/categories/3557819/posts/11358060"
                     ],
                     [
                         "Song: I'm In The Mood For Love",
@@ -193,9 +199,6 @@
                     [
                         "Song: Autumn Leaves",
                         "https://www.jazzskills.com/products/developing-fluency/categories/3557077/posts/11357433"
-                    ],
-                    ["Song With Lead: Autumn Leaves",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3557077/posts/11357433"
                     ]
                 ],
                 practice: [
@@ -207,17 +210,29 @@
                         "Progressions Summary",
                         "https://www.jazzskills.com/products/developing-fluency/categories/2147570802/posts/11278365"
                     ],
-
-                    ["Rhythm Practice ",
-                        "https://www.jazzskills.com/products/members-area/categories/2148228334/posts/2169863863"]
-
+                    [
+                        "Rhythm Practice",
+                        "https://www.jazzskills.com/products/members-area/categories/2148228334/posts/2169863863"
+                    ],
+                    [
+                        "Dominant Voicing 1 I VI7 II V",
+                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168343519"
+                    ],
+                    [
+                        "Dominant Voicing 1 II V I",
+                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168332764"
+                    ],
+                    [
+                        "Major7 Voicings I VI II V",
+                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168307079"
+                    ],
                 ]
             },
             comics: {
                 play: [
                     "Character brainstorming",
                     "Spontaneous story board sketching",
-                    "Add an object to a world",
+                    "Create an object for a world",
                     "Interaction brainstorm",
                     "Creative writing for world-building",
                     "draw a 4 panel comic",
@@ -238,7 +253,7 @@
                 play: [
                     "Free musical exploration",
                     "Experimental sound mixing",
-                    "Create a random melody",
+                    "Create an 8 bar melody",
                     "Improvise with different instruments",
                     "Sound texture experimentation"
                 ],
@@ -324,6 +339,11 @@
                     activityContent = `<a href="${url}" target="_blank">${text}</a>`;
                     if (activity === "piano") {
                         const randomLetters = ["C", "F", "G", "Bb", "Eb"];
+                        const randomLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+                        activityContent += ` (${randomLetter})`;
+                    }
+                    if (activity === "comic") {
+                        const randomLetters = ["Fire", "Earth", "Ice", "Water", "Air", "Underground"];
                         const randomLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
                         activityContent += ` (${randomLetter})`;
                     }
