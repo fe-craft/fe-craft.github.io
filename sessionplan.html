@@ -50,10 +50,41 @@
         .time-column {
             width: 15%;
             font-weight: bold;
+            cursor: pointer;
+        }
+
+        .time-column.active {
+            color: #4CAF50;
+        }
+
+        .time-column.paused {
+            color: #f44336;
+        }
+
+        .time-column.completed {
+            color: #2196F3;
         }
 
         .type-column {
             width: 85%;
+        }
+
+        .timer-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 2px 0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .timer-btn:hover {
+            background-color: #45a049;
         }
 
         @media print,
@@ -86,285 +117,274 @@
         </thead>
         <tbody id="sessionBlocks"></tbody>
     </table>
-
+    <script src="assets/js/activityData.js"></script>
     <script>
-        // Activity-specific lists of potential activities
-        const activityLists = {
-            drawing: {
-                play: [
-                    "Draw the Aviary alongside book",
-                    "Sketch random objects in room",
-                    "Draw a previous creature from imagination",
-                    "Draw Plant alongside Book",
-                    "Draw Insect alongside Book",
-                    "Draw Bone Structure alongside Book",
-                    "Draw Gesture alongside Book",
-                    "Draw Land Animal alongside Book",
-                    "Draw Marine alongside Book",
-                    "Draw Face with reference",
-                    "Draw expressive heads and shoulders from imagination",
-                    "Draw hands from imagination",
-                    "Draw skulls from imagination",
-                    "Draw manequins from imagination",
-                ],
-                practice: [
-                    [
-                        "Drawing Exercise Lvl1",
-                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
-                    ],
-                    [
-                        "Drawing Exercise Lvl2",
-                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
-                    ],
-                    [
-                        "Drawing Exercise Lvl3",
-                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
-                    ],
-                    [
-                        "Drawing Exercise Lvl4",
-                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
-                    ],
-                    [
-                        "Drawing Exercise Lvl5",
-                        "https://www.notion.so/Drawing-Exercises-1ac84569b31a806f8b94e0be66acc0ec?pvs=4"
-                    ],
-                    "explore cross hatching for lighting and texture",
-                    "explore soluettes for buildings",
-                    "explore soluettes for characters",
-                    "explore soluettes for scenery/ nature"
+    document.addEventListener('DOMContentLoaded', () => {
+        // Parse URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const activity = params.get('activity') || 'Unknown';
+        const blocks = (params.get('blocks') || '').split(',');
 
-                ]
-            },
-            guitar: {
-                play: [
-                    "Song: Steep Road",
-                    [
-                        "Good Riddance",
-                        "https://www.justinguitar.com/songs/green-day-good-riddance-time-of-your-life-chords-tabs-guitar-lesson-sg-066"
-                    ],
-                    [
-                        "brown eyed girl",
-                        "https://www.justinguitar.com/songs/van-morrison-brown-eyed-girl-chords-tabs-guitar-lesson-bs-304#learn-more"
-                    ],
-                    [
-                        "Patience",
-                        "https://www.justinguitar.com/songs/guns-n-roses-patience-1-3-easy-chords-tabs-guitar-lesson-st-621"
-                    ]
-                ],
-                practice: [
-                    [
-                        "Strumming patterns at speed in 4/4",
-                        "https://www.justinguitar.com/guitar-lessons/the-strumming-pattern-b1-404"
-                    ],
-                    [
-                        "C major scale",
-                        "https://www.justinguitar.com/guitar-lessons/c-major-scale-b2-905"
-                    ],
-                    [
-                        "all down 8th note strumming",
-                        "https://www.justinguitar.com/guitar-lessons/all-down-8th-note-strumming-b2-805"
-                    ],
-                    "Chord transition practice Muting inbetween",
-                    "E minor pentatonic with muting",
-                    "Strumming patterns at speed in 6/8",
-                    "Add to chord book/ charts"
-                ]
-            },
-            piano: {
-                play: [
-                    [
-                        "Song: Shan's Mood",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/2147575760/posts/16289729"
-                    ],
-                    [
-                        "Song: I can't Beleive That You're In Love With Me",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3558162/posts/11358218"
-                    ],
-                    [
-                        "Song: This Love Of Mine",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3558029/posts/11358157"
-                    ],
-                    [
-                        "Song: Falling In Love With Love",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3557819/posts/11358060"
-                    ],
-                    [
-                        "Song: I'm In The Mood For Love",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3557805/posts/11357949"
-                    ],
-                    [
-                        "Song: Fly Me To The Moon",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3557079/posts/11357434"
-                    ],
-                    [
-                        "Song: Autumn Leaves",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/3557077/posts/11357433"
-                    ]
-                ],
-                practice: [
-                    [
-                        "Inversions Practice",
-                        "https://www.jazzskills.com/products/members-area/categories/2153428453/posts/2185299134"
-                    ],
-                    [
-                        "Progressions Summary",
-                        "https://www.jazzskills.com/products/developing-fluency/categories/2147570802/posts/11278365"
-                    ],
-                    [
-                        "Rhythm Practice",
-                        "https://www.jazzskills.com/products/members-area/categories/2148228334/posts/2169863863"
-                    ],
-                    [
-                        "Dominant Voicing 1 I VI7 II V",
-                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168343519"
-                    ],
-                    [
-                        "Dominant Voicing 1 II V I",
-                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168332764"
-                    ],
-                    [
-                        "Major7 Voicings I VI II V",
-                        "https://www.jazzskills.com/products/members-area/categories/2153032196/posts/2168307079"
-                    ],
-                ]
-            },
-            comics: {
-                play: [
-                    "Character brainstorming",
-                    "Spontaneous story board sketching",
-                    "Create an object for a world",
-                    "Interaction brainstorm",
-                    "Creative writing for world-building",
-                    "draw a 4 panel comic",
-                    "title page for comic"
-                ],
-                practice: [
-                    "Simple Ideas for a comic",
-                    "Thumbnail and rough expression of a prior idea",
-                    "title page thumbnail for comic",
-                    "drawing thumbnail scene from different angles",
-                    "pacing, how little words can you add",
-                    "pacing, how many words can you add",
-                    "effect of panel shape and placement",
-                    "Inking and shading exercise"
-                ]
-            },
-            composition: {
-                play: [
-                    "Free musical exploration",
-                    "Experimental sound mixing",
-                    "Create an 8 bar melody",
-                    "Improvise with different instruments",
-                    "Sound texture experimentation"
-                ],
-                practice: [
-                    "Harmony study",
-                    "Rhythm pattern development",
-                    "Orchestration techniques",
-                    "Melodic variation exercises",
-                    "Composition structure analysis"
-                ]
-            },
-            singing: {
-                play: [
-                    "Vocal improvisation",
-                    "Explore vocal range",
-                    "Sing without constraints",
-                    "Create vocal sounds",
-                    "Emotion-based singing"
-                ],
-                practice: [
-                    "Breathing techniques",
-                    "Pitch precision exercises",
-                    "Vocal warm-ups",
-                    "Articulation practice",
-                    "Range expansion drills"
-                ]
-            },
-            rap: {
-                play: [
-                    "Freestyle rap",
-                    "Rhythm exploration",
-                    "Word association game",
-                    "Spontaneous rhyming",
-                    "Flow experimentation"
-                ],
-                practice: [
-                    "Breath control",
-                    "Rhyme scheme study",
-                    "Pronunciation clarity",
-                    "Rhythm precision",
-                    "Lyric writing techniques"
-                ]
+        // Set session title
+        const sessionTitle = document.getElementById('sessionTitle');
+        const totalTimeEl = document.getElementById('totalTime');
+
+        // Calculate total time
+        const totalMinutes = blocks.length * 10;
+
+        sessionTitle.textContent = `Session for ${activity.charAt(0).toUpperCase() + activity.slice(1)}`;
+        totalTimeEl.textContent = `Total Session Time: ${totalMinutes} minutes`;
+
+        // Display current date and time
+        const currentDateTimeEl = document.getElementById('currentDateTime');
+        const now = new Date();
+        currentDateTimeEl.textContent = now.toLocaleString();
+
+        // Array to store timer objects
+        const timers = [];
+
+        // Populate session blocks
+        const sessionBlocksEl = document.getElementById('sessionBlocks');
+        blocks.forEach((type, index) => {
+            // Calculate block start time
+            const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
+
+            // Get a random activity for the block
+            let specificActivity = 'Default Activity';
+            if (activityLists[activity] && activityLists[activity][type]) {
+                const possibleActivities = activityLists[activity][type];
+                specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
+            }   
+            let activityContent = '';
+            // specific activity in the form {title: "", url: "", variables: ["",..]}
+            if (specificActivity.url !== undefined && specificActivity.url.length != 0) {
+                const possibleUrl = specificActivity.url;
+                specificUrl = possibleUrl[Math.floor(Math.random() * possibleUrl.length)];
+                activityContent = `<a href="${specificUrl}" target="_blank">${specificActivity.title}</a>`;
             }
-        };
+            else if (specificActivity.url != "" ) {
+                activityContent = `<a href="${specificActivity.url}" target="_blank">${specificActivity.title}</a>`;
+            } else {
+                activityContent = specificActivity.title;
+            }
+            if (specificActivity.variables !== undefined && specificActivity.variables.length != 0) {
+                const possibleVariables = specificActivity.variables;
+                specificVariable = possibleVariables[Math.floor(Math.random() * possibleVariables.length)];
+                activityContent += ` - (${specificVariable})`
+            }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Parse URL parameters
-            const params = new URLSearchParams(window.location.search);
-            const activity = params.get('activity') || 'Unknown';
-            const blocks = (params.get('blocks') || '').split(',');
+            const row = document.createElement('tr');
+            const timerId = `timer-${index}`;
+            
+            row.innerHTML = `
+            <td class="time-column" id="${timerId}">
+                ${blockStartTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                <br>
+                <button class="timer-btn" data-timer-id="${timerId}">Start Timer</button>
+            </td>
+            <td class="type-column">
+                <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>:
+                ${activityContent}
+            </td>
+            `;
+            
+            sessionBlocksEl.appendChild(row);
+            
+            // Create a timer object for this row
+            timers[timerId] = {
+                id: timerId,
+                seconds: 0,
+                maxSeconds: 10 * 60, // 10 minutes
+                interval: null,
+                isRunning: false,
+                completed: false,
+                element: null,
+                notification: null
+            };
+        });
 
-            // Set session title
-            const sessionTitle = document.getElementById('sessionTitle');
-            const totalTimeEl = document.getElementById('totalTime');
-
-            // Calculate total time
-            const totalMinutes = blocks.length * 10;
-
-            sessionTitle.textContent = `Session for ${activity.charAt(0).toUpperCase() + activity.slice(1)}`;
-            totalTimeEl.textContent = `Total Session Time: ${totalMinutes} minutes`;
-
-            // Display current date and time
-            const currentDateTimeEl = document.getElementById('currentDateTime');
-            const now = new Date();
-            currentDateTimeEl.textContent = now.toLocaleString();
-
-            // Populate session blocks
-            const sessionBlocksEl = document.getElementById('sessionBlocks');
-            blocks.forEach((type, index) => {
-                // Calculate block start time
-                const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
-
-                // Get a random activity for the block
-                let specificActivity = 'Default Activity';
-                if (activityLists[activity] && activityLists[activity][type]) {
-                    const possibleActivities = activityLists[activity][type];
-                    specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
-                }
-                let activityContent = '';
-                if (Array.isArray(specificActivity)) {
-                    const [text, url] = specificActivity;
-                    console.log(url);
-                    activityContent = `<a href="${url}" target="_blank">${text}</a>`;
-                    if (activity === "piano") {
-                        const randomLetters = ["C", "F", "G", "Bb", "Eb"];
-                        const randomLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
-                        activityContent += ` (${randomLetter})`;
+        // Set up timer functionality
+        document.querySelectorAll('.timer-btn').forEach(btn => {
+            const timerId = btn.getAttribute('data-timer-id');
+            const timerCell = document.getElementById(timerId);
+            
+            // Store reference to DOM element
+            timers[timerId].element = timerCell;
+            
+            btn.addEventListener('click', () => {
+                handleTimerButtonClick(timerId, btn);
+            });
+            
+            // Make the time text also clickable to pause/resume
+            timerCell.addEventListener('click', (e) => {
+                // Only trigger if clicking on the cell but not on the button
+                if (e.target !== btn && !timers[timerId].completed) {
+                    if (timers[timerId].isRunning) {
+                        pauseTimer(timerId);
+                    } else if (timers[timerId].seconds > 0) {
+                        resumeTimer(timerId);
                     }
-                    if (activity === "comic") {
-                        const randomLetters = ["Fire", "Earth", "Ice", "Water", "Air", "Underground"];
-                        const randomLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
-                        activityContent += ` (${randomLetter})`;
-                    }
-                } else {
-                    activityContent = specificActivity;
                 }
-
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td class="time-column">
-                        ${blockStartTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    </td>
-                    <td class="type-column">
-                        <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>: 
-                        ${activityContent}
-                    </td>
-                `;
-                sessionBlocksEl.appendChild(row);
             });
         });
+
+        function handleTimerButtonClick(timerId, btn) {
+            const timer = timers[timerId];
+            
+            if (!timer.isRunning && timer.seconds === 0) {
+                // Start timer for the first time
+                startTimer(timerId);
+                btn.textContent = "Pause";
+            } else if (timer.isRunning) {
+                // Pause timer
+                pauseTimer(timerId);
+                btn.textContent = "Resume";
+            } else {
+                // Resume timer
+                resumeTimer(timerId);
+                btn.textContent = "Pause";
+            }
+        }
+
+        function startTimer(timerId) {
+            const timer = timers[timerId];
+            const timerElement = timer.element;
+            
+            if (timer.completed) return;
+            
+            timer.isRunning = true;
+            timerElement.classList.add('active');
+            timerElement.classList.remove('paused');
+            
+            timer.interval = setInterval(() => {
+                timer.seconds++;
+                updateTimerDisplay(timerId);
+                
+                if (timer.seconds >= timer.maxSeconds) {
+                    completeTimer(timerId);
+                }
+            }, 1000);
+            
+            // Request notification permission if needed
+            if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+                Notification.requestPermission();
+            }
+        }
+
+        function pauseTimer(timerId) {
+            const timer = timers[timerId];
+            
+            if (!timer.isRunning || timer.completed) return;
+            
+            clearInterval(timer.interval);
+            timer.isRunning = false;
+            timer.element.classList.remove('active');
+            timer.element.classList.add('paused');
+        }
+
+        function resumeTimer(timerId) {
+            const timer = timers[timerId];
+            
+            if (timer.isRunning || timer.completed) return;
+            
+            timer.isRunning = true;
+            timer.element.classList.add('active');
+            timer.element.classList.remove('paused');
+            
+            timer.interval = setInterval(() => {
+                timer.seconds++;
+                updateTimerDisplay(timerId);
+                
+                if (timer.seconds >= timer.maxSeconds) {
+                    completeTimer(timerId);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay(timerId) {
+            const timer = timers[timerId];
+            const minutes = Math.floor(timer.seconds / 60);
+            const seconds = timer.seconds % 60;
+            
+            // Format: mm:ss
+            const displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Find the button element
+            const btn = document.querySelector(`button[data-timer-id="${timerId}"]`);
+            
+            // Update the display
+            timer.element.innerHTML = `
+                ${displayTime}
+                <br>
+                ${btn.outerHTML}
+            `;
+        }
+
+        function completeTimer(timerId) {
+            const timer = timers[timerId];
+            
+            // Stop the timer
+            clearInterval(timer.interval);
+            timer.isRunning = false;
+            timer.completed = true;
+            
+            // Update the styling
+            timer.element.classList.remove('active');
+            timer.element.classList.remove('paused');
+            timer.element.classList.add('completed');
+            
+            // Update the button text
+            const btn = document.querySelector(`button[data-timer-id="${timerId}"]`);
+            btn.textContent = "Completed";
+            btn.disabled = true;
+            
+            // Play sound notification
+            playNotificationSound();
+            
+            // Send browser notification
+            showNotification(timerId);
+        }
+
+        function playNotificationSound() {
+            try {
+                // Create an audio element and play a sound
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLXOt1MF8LwgSQXOaVXuyNrfR6Lc/FSMxY4mSY0ZnSFUyKw43W3yLbGBtbGcxFwwULmmEk3BRTVlUIxEIGkd9lXNaSFZkSCoXIFSClGY6KCtARDMeFiNEboFrTDY7WFxCKRoqT3eGZWVpanZdPCYcOoah0dCkfVxPRDwjDB1HcJCEem5vXEIbBRIwZpW11biNc1JEQC0UDypeiqqxlHRdRDYW/wkfUIS09/7RpIBhTkQpCwURPnmrtbWSfWZMMRT7DSZbi6Sqi3FaRTUY/AglVomka4JpYEo3GPIJL2WQiWpYT0g7GvAHKmGYmIBiUEU6GvAGKGCql5J2YUs5GvEIKV6f1dO2jnBZRTcb+AooWZDG7c2tkndZQzEU9wkoXaX//9CjeVdDMBLzBydWhtHt4LeRclNALhHwBiVSmKePe2k7Hhk5R0UkAdDe+dSleE8lAEOq2ta4i2AnCEOe0caBQRwMK2GNjGdGWmBJJwwEFzt8i2khACNHWDYL0+D007BuKwgZTIaGXlFWXE4xE/z/IWKirJBcNCtNWz0M/P8tUWZvbXBgRC4VAP0lWIJ/Z1dJVE06IAD7ESBXgnZXHw4xVWAyEgkMFSUtfq1/TiMKJEFqTDMcDRMYITBwvpFYL2JfUy0QAQsQMnPBoW48ZWBbLQUBCRRAitvGhUgzWWFNIAAABRhQh77HpoRZLDI+IQcAAhFEZXh7gHxRGRYKCQYAFDF0qsvAtI9eLDQnDAYACDRnpce9rXlCGjEdCgUAB0BRXl+FupZSJDglGgwGEjtaf6LLzK13NBwdHBQHBh5BgODlzJpDGhcmIRQLBSE1TXOgwcqgXCMRJzEjEAYUPInd572mXDEQFSIYDgcpT2FdXXiewqBNHRUhIBMJBi0+T36l0tp2KQYIFBsQCQcfMDVLWZXe95pbJgsSHRcLBh9G2/LMgDsYDBUcDwkFF0JsbZpZLhIeLyEWDwwiNjVEi+PqvnQqCx5zr7KuiVIkCDxhh354X0IjChc7W2lwaWNKHQQQLFZnaoCasplgLgURIjY7QEtpcoV2YEEsHBg5dnH/10sZBC5UdoNzZVUsEQAEJVB4foJ1XDseBQMJEil8i45QBQEMHzRLhcbp0J9fMQkAAxI3b5VnMRMOBwcFFz+S3MCIVikRBAEIF2/c+82IOxQNBQQEJFJkd4X//eWQQxsLBQA2b8Xw1pxRIAsDABAjWZCLfUEu//wEACl53/nomUcUDAAAACBTiaJqJhT/GC1BWol9YCcT+xA2V2VeufWwolspEwYNM3mRdV0xEv1GtK+YRBwJBTBYY3B9i6ekq4BQKzYsIQD+CkN2mZqFVyIBDUFwvJlPFA0aL0FPO/+Jf5ybaTkJBi5EYnZjBRUtTW2BcjoL+zRkdlQNARIvWYCNcjoJ+0d1gF8TABk4V217aCsI+Rx5iWAoAAMfOVNQNgALESQ+XHhybAIH78anh1IdAwYgQWGAnohSJAEABBU3TFcwA/0DGTZ9oKkzLB0eJjIpEAIEFzVHVjT9GECS69V6FgMDBhUseqDPnV4tEgQEESQ3UW56ekAeERIVKj0rMxIMBQ4wR1pVPQEIAQocM1pwZUo/GwgIDSErXy4yCx0XFCIyjpiHRhgQEAwdFjBLMiIUIxwvQFNcSTQBAgc4UWl8en5VJg0KAAYaaHJc0/LZwaRuYUtAHwL+MHLKu6yYzL56d1tFNhUE/Cm52tSsi3FsbkIrFAL++g4XGf82HfX63smbho6dhFksFQMCAAAAAAAZOzkIALTS4PZrLQogLCUH2t7kAHg=');
+                audio.play();
+            } catch (e) {
+                console.error("Could not play notification sound:", e);
+            }
+        }
+
+        function showNotification(timerId) {
+            if (Notification.permission === "granted") {
+                // Get the activity name from the row
+                const rowElement = timer.element.parentElement;
+                const activityText = rowElement.querySelector('.type-column').innerText.trim();
+                
+                // Create notification
+                timers[timerId].notification = new Notification("Timer Completed!", {
+                    body: `Your 10-minute timer for "${activityText}" has completed!`,
+                    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0Q0FGNTAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=",
+                    vibrate: [200, 100, 200]
+                });
+                
+                // Add click handler to notification
+                timers[timerId].notification.onclick = function() {
+                    window.focus();
+                    this.close();
+                };
+            }
+        }
+        
+        // Register a service worker for background notification support
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('assets/js/timer-service-worker.js').then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    });
     </script>
 </body>
 
