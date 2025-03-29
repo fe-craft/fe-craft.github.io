@@ -157,7 +157,7 @@
             }   
             let activityContent = '';
             // specific activity in the form {title: "", url: "", variables: ["",..]}
-            if (specificActivity.url !== undefined && specificActivity.url.length != 0) {
+            if (specificActivity.url !== undefined && specificActivity.url.length != 0 && specificActivity.url.constructor === Array) {
                 const possibleUrl = specificActivity.url;
                 specificUrl = possibleUrl[Math.floor(Math.random() * possibleUrl.length)];
                 activityContent = `<a href="${specificUrl}" target="_blank">${specificActivity.title}</a>`;
