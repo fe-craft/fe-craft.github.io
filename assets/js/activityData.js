@@ -505,5 +505,82 @@
                 variables: []
             }
         ]
+    },
+    french : {
+        practice: [
+            {
+                title: "Vocabulary test",
+                url: "https://www.quiz-tree.com/French_Vocabulary_main.html",
+                variables: ["Basics","Getting There","Numbers","Time","House","Occupations","School","Shopping","Nature","Medical","Family","Colors","Describing People","Entertainment","Food"]
+            },
+            {
+                title: "News In French",
+                url: ["https://www.newsinslowfrench.com/","https://francaisfacile.rfi.fr/fr/podcasts/journal-en-fran%C3%A7ais-facile/"],
+                variables: ["note new words", "summarise sentences", "summarise passages"]
+            },
+            {
+                title: "Stories with Audio",
+                url: "https://www.thefrenchexperiment.com/stories",
+                variables: ["note new words", "summarise sentences", "summarise passages"]
+            },
+            {
+                title: "Dictee in French",
+                url: ["https://www.youtube.com/watch?v=TQSa0XuVcWQ&list=PL_Ddcj9mdkpUjaMLYJFYyCZQxPKgbdI_R&ab_channel=LearnToFrench","https://www.youtube.com/watch?v=O6NbdY_LjVo&list=PL_Ddcj9mdkpUjaMLYJFYyCZQxPKgbdI_R&index=3&ab_channel=LearnToFrench","https://www.youtube.com/watch?v=Dp84ld1S0bE&list=PL_Ddcj9mdkpUjaMLYJFYyCZQxPKgbdI_R&index=3&ab_channel=LearnToFrench","https://www.youtube.com/watch?v=oaI736HGjzY&list=PL_Ddcj9mdkpUjaMLYJFYyCZQxPKgbdI_R&index=5&ab_channel=LearnToFrench"],
+                variables: []
+            },
+            {
+                title: "Reading Comprehension Sheet",
+                url: ["https://www.podcastfrancaisfacile.com/texte/guide-michelin.html","https://www.podcastfrancaisfacile.com/texte-court/dates-vacances-scolaires-texte-francais-facile.html"],
+                variables: []
+            },
+            // {
+            //     title: "Listening with french subtitles",
+            //     url: ["https://francaisfacile.rfi.fr/fr/podcasts/journal-en-fran%C3%A7ais-facile/"],
+            //     variables: ["note new words", "summarise sentences", "summarise passages"]
+            // },
+            {
+                title: "Stories",
+                url: [
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_031#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_028#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_032#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_004#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_009#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_019#histoire",
+                    "https://www.iletaitunehistoire.com/genres/documentaires/lire/bibliddoc_001#histoire"
+                ],
+                variables: ["note new words", "summarise sentences", "summarise passages"]
+            }
+
+            
+        ],
+        play: [
+            {
+                title: "Youtube: ListenEF",
+                url: "https://www.youtube.com/@ListenEF",
+                variables: ["somewhere to write answers"]
+            },
+            {
+                title: "Videos",
+                url: [
+                    "https://www.youtube.com/@karambolagefr/videos",
+                    "https://apprendre.tv5monde.com/fr"
+                ],
+                variables: ["note new words", "summarise sentences", "summarise passages"]
+            },
+            {
+                title: "Songs",
+                url: [
+                    "https://www.youtube.com/user/tialela99",
+                    "https://www.chantefrance.com/r"
+                ],
+                variables: ["note new words", "summarise sentences", "summarise passages"]
+            },
+            {
+                title: "CoffeeBreak",
+                url: "https://podcasts.apple.com/us/podcast/coffee-break-french/id263170419",
+                variables: []
+            }
+        ]
     }
 };

@@ -50,41 +50,40 @@
         .time-column {
             width: 15%;
             font-weight: bold;
-            cursor: pointer;
-        }
-
-        .time-column.active {
-            color: #4CAF50;
-        }
-
-        .time-column.paused {
-            color: #f44336;
-        }
-
-        .time-column.completed {
-            color: #2196F3;
         }
 
         .type-column {
             width: 85%;
         }
 
-        .timer-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 12px;
-            margin: 2px 0;
-            cursor: pointer;
+        /* Block type colors */
+        .block-play {
+            background-color: #a0d8ff;
+        }
+
+        .block-practice {
+            background-color: #b0ffa0;
+        }
+
+        .block-explore {
+            background-color: #ffa0a0;
+        }
+
+        .block-rest {
+            background-color: #f0f0f0;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
             border-radius: 4px;
         }
 
-        .timer-btn:hover {
-            background-color: #45a049;
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
         }
 
         @media print,
@@ -108,6 +107,8 @@
         <div id="totalTime"></div>
     </div>
 
+    <div id="notifications" class="alert alert-info" style="display: none;"></div>
+
     <table class="session-table">
         <thead>
             <tr>
@@ -120,269 +121,137 @@
     <script src="assets/js/activityData.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Parse URL parameters
-        const params = new URLSearchParams(window.location.search);
-        const activity = params.get('activity') || 'Unknown';
-        const blocks = (params.get('blocks') || '').split(',');
+        // Application state
+        const appState = {
+            activity: '',
+            totalMinutes: 0,
+            blocks: []
+        };
 
-        // Set session title
-        const sessionTitle = document.getElementById('sessionTitle');
-        const totalTimeEl = document.getElementById('totalTime');
+        // Initialize the application
+        initApp();
 
-        // Calculate total time
-        const totalMinutes = blocks.length * 10;
+        function initApp() {
+            // Parse URL parameters
+            parseUrlParams();
 
-        sessionTitle.textContent = `Session for ${activity.charAt(0).toUpperCase() + activity.slice(1)}`;
-        totalTimeEl.textContent = `Total Session Time: ${totalMinutes} minutes`;
+            // Display session information
+            displaySessionInfo();
+            
+            // Create session blocks
+            createSessionBlocks();
+        }
 
-        // Display current date and time
-        const currentDateTimeEl = document.getElementById('currentDateTime');
-        const now = new Date();
-        currentDateTimeEl.textContent = now.toLocaleString();
+        function parseUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            appState.activity = params.get('activity') || 'Unknown';
+            appState.blocks = (params.get('blocks') || '').split(',');
+            appState.totalMinutes = appState.blocks.length * 10;
+        }
 
-        // Array to store timer objects
-        const timers = [];
+        function displaySessionInfo() {
+            // Set session title
+            const sessionTitle = document.getElementById('sessionTitle');
+            const totalTimeEl = document.getElementById('totalTime');
 
-        // Populate session blocks
-        const sessionBlocksEl = document.getElementById('sessionBlocks');
-        blocks.forEach((type, index) => {
-            // Calculate block start time
-            const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
+            sessionTitle.textContent = `Session for ${appState.activity.charAt(0).toUpperCase() + appState.activity.slice(1)}`;
+            totalTimeEl.textContent = `Total Session Time: ${appState.totalMinutes} minutes`;
 
-            // Get a random activity for the block
-            let specificActivity = 'Default Activity';
-            if (activityLists[activity] && activityLists[activity][type]) {
-                const possibleActivities = activityLists[activity][type];
-                specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
-            }   
+            // Display current date and time
+            const currentDateTimeEl = document.getElementById('currentDateTime');
+            const now = new Date();
+            currentDateTimeEl.textContent = now.toLocaleString();
+        }
+
+        function createSessionBlocks() {
+            // Populate session blocks
+            const sessionBlocksEl = document.getElementById('sessionBlocks');
+            const now = new Date();
+            
+            appState.blocks.forEach((type, index) => {
+                // Calculate block start time
+                const blockStartTime = new Date(now.getTime() + (index * 10 * 60 * 1000));
+
+                // Get a random activity for the block
+                let specificActivity = getRandomActivity(type);
+                let activityContent = formatActivityContent(specificActivity);
+
+                const row = document.createElement('tr');
+                row.classList.add(`block-${type.toLowerCase()}`);
+                
+                row.innerHTML = `
+                <td class="time-column">
+                    ${blockStartTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </td>
+                <td class="type-column">
+                    <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>:
+                    ${activityContent}
+                </td>
+                `;
+                
+                sessionBlocksEl.appendChild(row);
+            });
+        }
+
+        function getRandomActivity(type) {
+            // Default activity
+            let specificActivity = {title: 'Default Activity', url: ''};
+            
+            // Try to get activity from activityLists
+            try {
+                if (typeof activityLists !== 'undefined' && 
+                    activityLists[appState.activity] && 
+                    activityLists[appState.activity][type]) {
+                    const possibleActivities = activityLists[appState.activity][type];
+                    specificActivity = possibleActivities[Math.floor(Math.random() * possibleActivities.length)];
+                }
+            } catch (error) {
+                console.error("Error accessing activity data:", error);
+                showNotification("Could not load activity data. Using default activities.");
+            }
+            
+            return specificActivity;
+        }
+
+        function formatActivityContent(specificActivity) {
             let activityContent = '';
-            // specific activity in the form {title: "", url: "", variables: ["",..]}
-            if (specificActivity.url !== undefined && specificActivity.url.length != 0 && specificActivity.url.constructor === Array) {
+            
+            // Handle activity with URL array
+            if (specificActivity.url !== undefined && 
+                specificActivity.url.length != 0 && 
+                specificActivity.url.constructor === Array) {
                 const possibleUrl = specificActivity.url;
-                specificUrl = possibleUrl[Math.floor(Math.random() * possibleUrl.length)];
+                const specificUrl = possibleUrl[Math.floor(Math.random() * possibleUrl.length)];
                 activityContent = `<a href="${specificUrl}" target="_blank">${specificActivity.title}</a>`;
             }
-            else if (specificActivity.url != "" ) {
+            // Handle activity with single URL
+            else if (specificActivity.url && specificActivity.url !== "") {
                 activityContent = `<a href="${specificActivity.url}" target="_blank">${specificActivity.title}</a>`;
-            } else {
+            } 
+            // Handle activity without URL
+            else {
                 activityContent = specificActivity.title;
             }
+            
+            // Add variables if available
             if (specificActivity.variables !== undefined && specificActivity.variables.length != 0) {
                 const possibleVariables = specificActivity.variables;
-                specificVariable = possibleVariables[Math.floor(Math.random() * possibleVariables.length)];
-                activityContent += ` - (${specificVariable})`
+                const specificVariable = possibleVariables[Math.floor(Math.random() * possibleVariables.length)];
+                activityContent += ` - (${specificVariable})`;
             }
-
-            const row = document.createElement('tr');
-            const timerId = `timer-${index}`;
             
-            row.innerHTML = `
-            <td class="time-column" id="${timerId}">
-                ${blockStartTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                <br>
-                <button class="timer-btn" data-timer-id="${timerId}">Start Timer</button>
-            </td>
-            <td class="type-column">
-                <strong>${type.charAt(0).toUpperCase() + type.slice(1)}</strong>:
-                ${activityContent}
-            </td>
-            `;
-            
-            sessionBlocksEl.appendChild(row);
-            
-            // Create a timer object for this row
-            timers[timerId] = {
-                id: timerId,
-                seconds: 0,
-                maxSeconds: 10 * 60, // 10 minutes
-                interval: null,
-                isRunning: false,
-                completed: false,
-                element: null,
-                notification: null
-            };
-        });
-
-        // Set up timer functionality
-        document.querySelectorAll('.timer-btn').forEach(btn => {
-            const timerId = btn.getAttribute('data-timer-id');
-            const timerCell = document.getElementById(timerId);
-            
-            // Store reference to DOM element
-            timers[timerId].element = timerCell;
-            
-            btn.addEventListener('click', () => {
-                handleTimerButtonClick(timerId, btn);
-            });
-            
-            // Make the time text also clickable to pause/resume
-            timerCell.addEventListener('click', (e) => {
-                // Only trigger if clicking on the cell but not on the button
-                if (e.target !== btn && !timers[timerId].completed) {
-                    if (timers[timerId].isRunning) {
-                        pauseTimer(timerId);
-                    } else if (timers[timerId].seconds > 0) {
-                        resumeTimer(timerId);
-                    }
-                }
-            });
-        });
-
-        function handleTimerButtonClick(timerId, btn) {
-            const timer = timers[timerId];
-            
-            if (!timer.isRunning && timer.seconds === 0) {
-                // Start timer for the first time
-                startTimer(timerId);
-                btn.textContent = "Pause";
-            } else if (timer.isRunning) {
-                // Pause timer
-                pauseTimer(timerId);
-                btn.textContent = "Resume";
-            } else {
-                // Resume timer
-                resumeTimer(timerId);
-                btn.textContent = "Pause";
-            }
-        }
-
-        function startTimer(timerId) {
-            const timer = timers[timerId];
-            const timerElement = timer.element;
-            
-            if (timer.completed) return;
-            
-            timer.isRunning = true;
-            timerElement.classList.add('active');
-            timerElement.classList.remove('paused');
-            
-            timer.interval = setInterval(() => {
-                timer.seconds++;
-                updateTimerDisplay(timerId);
-                
-                if (timer.seconds >= timer.maxSeconds) {
-                    completeTimer(timerId);
-                }
-            }, 1000);
-            
-            // Request notification permission if needed
-            if (Notification.permission !== "granted" && Notification.permission !== "denied") {
-                Notification.requestPermission();
-            }
-        }
-
-        function pauseTimer(timerId) {
-            const timer = timers[timerId];
-            
-            if (!timer.isRunning || timer.completed) return;
-            
-            clearInterval(timer.interval);
-            timer.isRunning = false;
-            timer.element.classList.remove('active');
-            timer.element.classList.add('paused');
-        }
-
-        function resumeTimer(timerId) {
-            const timer = timers[timerId];
-            
-            if (timer.isRunning || timer.completed) return;
-            
-            timer.isRunning = true;
-            timer.element.classList.add('active');
-            timer.element.classList.remove('paused');
-            
-            timer.interval = setInterval(() => {
-                timer.seconds++;
-                updateTimerDisplay(timerId);
-                
-                if (timer.seconds >= timer.maxSeconds) {
-                    completeTimer(timerId);
-                }
-            }, 1000);
-        }
-
-        function updateTimerDisplay(timerId) {
-            const timer = timers[timerId];
-            const minutes = Math.floor(timer.seconds / 60);
-            const seconds = timer.seconds % 60;
-            
-            // Format: mm:ss
-            const displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Find the button element
-            const btn = document.querySelector(`button[data-timer-id="${timerId}"]`);
-            
-            // Update the display
-            timer.element.innerHTML = `
-                ${displayTime}
-                <br>
-                ${btn.outerHTML}
-            `;
-        }
-
-        function completeTimer(timerId) {
-            const timer = timers[timerId];
-            
-            // Stop the timer
-            clearInterval(timer.interval);
-            timer.isRunning = false;
-            timer.completed = true;
-            
-            // Update the styling
-            timer.element.classList.remove('active');
-            timer.element.classList.remove('paused');
-            timer.element.classList.add('completed');
-            
-            // Update the button text
-            const btn = document.querySelector(`button[data-timer-id="${timerId}"]`);
-            btn.textContent = "Completed";
-            btn.disabled = true;
-            
-            // Play sound notification
-            playNotificationSound();
-            
-            // Send browser notification
-            showNotification(timerId);
-        }
-
-        function playNotificationSound() {
-            try {
-                // Create an audio element and play a sound
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLXOt1MF8LwgSQXOaVXuyNrfR6Lc/FSMxY4mSY0ZnSFUyKw43W3yLbGBtbGcxFwwULmmEk3BRTVlUIxEIGkd9lXNaSFZkSCoXIFSClGY6KCtARDMeFiNEboFrTDY7WFxCKRoqT3eGZWVpanZdPCYcOoah0dCkfVxPRDwjDB1HcJCEem5vXEIbBRIwZpW11biNc1JEQC0UDypeiqqxlHRdRDYW/wkfUIS09/7RpIBhTkQpCwURPnmrtbWSfWZMMRT7DSZbi6Sqi3FaRTUY/AglVomka4JpYEo3GPIJL2WQiWpYT0g7GvAHKmGYmIBiUEU6GvAGKGCql5J2YUs5GvEIKV6f1dO2jnBZRTcb+AooWZDG7c2tkndZQzEU9wkoXaX//9CjeVdDMBLzBydWhtHt4LeRclNALhHwBiVSmKePe2k7Hhk5R0UkAdDe+dSleE8lAEOq2ta4i2AnCEOe0caBQRwMK2GNjGdGWmBJJwwEFzt8i2khACNHWDYL0+D007BuKwgZTIaGXlFWXE4xE/z/IWKirJBcNCtNWz0M/P8tUWZvbXBgRC4VAP0lWIJ/Z1dJVE06IAD7ESBXgnZXHw4xVWAyEgkMFSUtfq1/TiMKJEFqTDMcDRMYITBwvpFYL2JfUy0QAQsQMnPBoW48ZWBbLQUBCRRAitvGhUgzWWFNIAAABRhQh77HpoRZLDI+IQcAAhFEZXh7gHxRGRYKCQYAFDF0qsvAtI9eLDQnDAYACDRnpce9rXlCGjEdCgUAB0BRXl+FupZSJDglGgwGEjtaf6LLzK13NBwdHBQHBh5BgODlzJpDGhcmIRQLBSE1TXOgwcqgXCMRJzEjEAYUPInd572mXDEQFSIYDgcpT2FdXXiewqBNHRUhIBMJBi0+T36l0tp2KQYIFBsQCQcfMDVLWZXe95pbJgsSHRcLBh9G2/LMgDsYDBUcDwkFF0JsbZpZLhIeLyEWDwwiNjVEi+PqvnQqCx5zr7KuiVIkCDxhh354X0IjChc7W2lwaWNKHQQQLFZnaoCasplgLgURIjY7QEtpcoV2YEEsHBg5dnH/10sZBC5UdoNzZVUsEQAEJVB4foJ1XDseBQMJEil8i45QBQEMHzRLhcbp0J9fMQkAAxI3b5VnMRMOBwcFFz+S3MCIVikRBAEIF2/c+82IOxQNBQQEJFJkd4X//eWQQxsLBQA2b8Xw1pxRIAsDABAjWZCLfUEu//wEACl53/nomUcUDAAAACBTiaJqJhT/GC1BWol9YCcT+xA2V2VeufWwolspEwYNM3mRdV0xEv1GtK+YRBwJBTBYY3B9i6ekq4BQKzYsIQD+CkN2mZqFVyIBDUFwvJlPFA0aL0FPO/+Jf5ybaTkJBi5EYnZjBRUtTW2BcjoL+zRkdlQNARIvWYCNcjoJ+0d1gF8TABk4V217aCsI+Rx5iWAoAAMfOVNQNgALESQ+XHhybAIH78anh1IdAwYgQWGAnohSJAEABBU3TFcwA/0DGTZ9oKkzLB0eJjIpEAIEFzVHVjT9GECS69V6FgMDBhUseqDPnV4tEgQEESQ3UW56ekAeERIVKj0rMxIMBQ4wR1pVPQEIAQocM1pwZUo/GwgIDSErXy4yCx0XFCIyjpiHRhgQEAwdFjBLMiIUIxwvQFNcSTQBAgc4UWl8en5VJg0KAAYaaHJc0/LZwaRuYUtAHwL+MHLKu6yYzL56d1tFNhUE/Cm52tSsi3FsbkIrFAL++g4XGf82HfX63smbho6dhFksFQMCAAAAAAAZOzkIALTS4PZrLQogLCUH2t7kAHg=');
-                audio.play();
-            } catch (e) {
-                console.error("Could not play notification sound:", e);
-            }
-        }
-
-        function showNotification(timerId) {
-            if (Notification.permission === "granted") {
-                // Get the activity name from the row
-                const rowElement = timer.element.parentElement;
-                const activityText = rowElement.querySelector('.type-column').innerText.trim();
-                
-                // Create notification
-                timers[timerId].notification = new Notification("Timer Completed!", {
-                    body: `Your 10-minute timer for "${activityText}" has completed!`,
-                    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0Q0FGNTAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=",
-                    vibrate: [200, 100, 200]
-                });
-                
-                // Add click handler to notification
-                timers[timerId].notification.onclick = function() {
-                    window.focus();
-                    this.close();
-                };
-            }
+            return activityContent;
         }
         
-        // Register a service worker for background notification support
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('assets/js/timer-service-worker.js').then(function(registration) {
-                console.log('Service Worker registered with scope:', registration.scope);
-            }).catch(function(error) {
-                console.log('Service Worker registration failed:', error);
-            });
+        function showNotification(message) {
+            const notificationsEl = document.getElementById('notifications');
+            notificationsEl.textContent = message;
+            notificationsEl.style.display = 'block';
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                notificationsEl.style.display = 'none';
+            }, 5000);
         }
     });
     </script>
