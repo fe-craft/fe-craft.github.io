@@ -129,12 +129,12 @@
             },
             {
                 title: "Good Riddance",
-                url: "https://www.justinguitar.com/songs/green-day-good-riddance-time-of-your-life-chords-tabs-guitar-lesson-sg-066",
+                url: "https://tabs.ultimate-guitar.com/tab/green-day/good-riddance-time-of-your-life-chords-12835",
                 variables: []
             },
             {
                 title: "brown eyed girl",
-                url: "https://www.justinguitar.com/songs/van-morrison-brown-eyed-girl-chords-tabs-guitar-lesson-bs-304#learn-more",
+                url: "https://tabs.ultimate-guitar.com/tab/van-morrison/brown-eyed-girl-chords-819644",
                 variables: []
             },
             {
@@ -233,6 +233,11 @@
             {
                 title: "Progressions Summary",
                 url: "https://www.jazzskills.com/products/developing-fluency/categories/2147570802/posts/11278365",
+                variables: ["C", "F", "G", "Bb", "Eb"]
+            },
+            {
+                title: "Scale practice",
+                url: "https://www.jazzskills.com/products/members-area/categories/36186/posts/2186481230",
                 variables: ["C", "F", "G", "Bb", "Eb"]
             },
             {
