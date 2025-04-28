@@ -402,11 +402,6 @@
     singing: {
         play: [
             {
-                title: "Vocal improvisation",
-                url: "",
-                variables: []
-            },
-            {
                 title: "Explore vocal range",
                 url: "",
                 variables: []
@@ -429,28 +424,38 @@
         ],
         practice: [
             {
-                title: "Breathing techniques",
-                url: "",
+                title: "Vocalize Warm Ups",
+                url: "https://www.musicedconsultants.net/uploads/1/0/1/6/101642100/vocalize__by_andy_beck.pdf",
                 variables: []
             },
             {
-                title: "Pitch precision exercises",
-                url: "",
+                title: "Sight Singing",
+                url: "https://www.teoria.com/en/exercises/ss.php",
                 variables: []
             },
             {
-                title: "Vocal warm-ups",
-                url: "",
+                title: "Sight Singing (tonegym)",
+                url: "https://www.tonegym.co/tool/item?id=sight-singing-trainer",
                 variables: []
             },
             {
-                title: "Articulation practice",
-                url: "",
+                title: "Progressive Sight Singing",
+                url: "https://www.hullmusichub.com/wp-content/uploads/2020/03/Sight-singing-exercises.pdf",
                 variables: []
             },
             {
-                title: "Range expansion drills",
-                url: "",
+                title: "Sight Singing",
+                url: "https://musicatoakgrove.wordpress.com/wp-content/uploads/2013/12/sight-singing1.pdf",
+                variables: []
+            },
+            {
+                title: "An Introduction to Sight Singing",
+                url: "https://mrblancq.weebly.com/uploads/7/6/7/6/76762683/introtosight-singing.pdf",
+                variables: []
+            },
+            {
+                title: "Solfege Chart",
+                url: "https://faculty.sfcc.spokane.edu/InetShare/AutoWebs/dannym/Music%20Fundamentals/Supplemental%20Info/Solfege%20chart.pdf",
                 variables: []
             }
         ]
