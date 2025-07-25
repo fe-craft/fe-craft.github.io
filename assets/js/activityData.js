@@ -455,6 +455,21 @@ var randomAnimal = randomAnimals[Math.floor(Math.random() * randomAnimals.length
         ],
         practice: [
             {
+                title: "Rules of Thirds II",
+                url: "https://www.jazzskills.com/products/members-area/categories/41551/posts/2188969325#",
+                variables: ["C", "F", "G", "Bb", "Eb"]
+            },
+            {
+                title: "Rules of Thirds I",
+                url: "https://www.jazzskills.com/products/members-area/categories/41551/posts/2187827024",
+                variables: ["C", "F", "G", "Bb", "Eb"]
+            },
+            {
+                title: "Rules of Thirds Rhythmic",
+                url: "https://www.jazzskills.com/products/members-area/categories/41551/posts/2189559040",
+                variables: ["C", "F", "G", "Bb", "Eb"]
+            },
+            {
                 title: "Inversions Practice",
                 url: "https://www.jazzskills.com/products/members-area/categories/2153428453/posts/2185299134",
                 variables: ["C", "F", "G", "Bb", "Eb"]
