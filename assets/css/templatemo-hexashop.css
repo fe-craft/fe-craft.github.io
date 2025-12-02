@@ -714,6 +714,10 @@ banner
   margin-bottom: 30px;
 }
 
+.right-content {
+  overflow: hidden;
+}
+
 .main-banner .right-content .right-first-image {
   margin-bottom: 28.5px;
 }
@@ -1761,7 +1765,11 @@ Single Product Page
 
 .monkey-img {
   padding: 10px;
+  /* filter: drop-shadow(30px 10px 4px grey); */
 }
+/* .monkey-img:hover {
+  filter: drop-shadow(0px 0px 0px grey);
+} */
 
 .album-img {
   object-fit: cover;

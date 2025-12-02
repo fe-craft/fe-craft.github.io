@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+    <link rel="icon" type="image/png" href="assets/images/AP-LOGO-ROUND.png"/>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +10,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop - Product Listing Page</title>
+    <title>Product Listing Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -29,6 +30,11 @@ TemplateMo 571 Hexashop
 https://templatemo.com/tm-571-hexashop
 
 -->
+
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
     </head>
     
     <body>
@@ -43,7 +49,6 @@ https://templatemo.com/tm-571-hexashop
     </div>  
     <!-- ***** Preloader End ***** -->
     
-    
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -52,35 +57,28 @@ https://templatemo.com/tm-571-hexashop
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/AP-FeLOGO-full-INVERT.png">
+                            <img class="logo-img" src="assets/images/AP-FeLOGO-fulll-INVERT.png">
+                            <!-- <img class="logo" src="assets/images/AP-FeLOGO-fulll-INVERT.png"> -->
                         </a>
+
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="index.html">music's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">drawings's</a></li>
-                            <li class="scroll-to-section"><a href="index.html">design's</a></li>
+                            <li class="scroll-to-section"><a href="index.html">Home</a></li>
+                            <li class="scroll-to-section"><a href="drawing.html">Créations & Designs</a></li>
+                            <li class="scroll-to-section"><a href="music.html">Contact/ Support</a></li>
+                            <!-- <li class="scroll-to-section"><a href="comingsoon.html">words</a></li>
+                            <li class="scroll-to-section"><a href="woodwork.html"><i class="fa fa-solid fa-hands"></i> woodwork</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Pages</a>
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="comingsoon.html">About Us</a></li>
+                                    <li><a href="comingsoon.html">Products</a></li>
+                                    <li><a href="comingsoon.html">Single Product</a></li>
+                                    <li><a href="comingsoon.html">Contact Us</a></li>
                                 </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        </ul>        
+                            </li> -->
+                        </ul>    
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -99,7 +97,6 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="inner-content">
                         <h2>Check Our Products</h2>
-                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
                     </div>
                 </div>
             </div>
@@ -114,7 +111,7 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
-                        <h2>Our Latest Products</h2>
+                        <h2>Cartes Saisonnières & de Noël/ Seasonal & Christmas Cards</h2>
                         <span>Check out all of our products.</span>
                     </div>
                 </div>
@@ -125,247 +122,190 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/music-01.jpg" alt="">
+                            <img src="assets/images/slate.jpg" alt="">
                         </div>
                         <div class="down-content">
                             <h4>Classic Spring</h4>
-                            <span>$120.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/music-02.jpg" alt="">
+                            <img src="assets/images/slate.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <h4>Air Force 1 X</h4>
-                            <span>$90.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <div class="item">
                         <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/music-03.jpg" alt="">
+                            <img src="assets/images/slate.jpg" alt="">
                         </div>
                         <div class="down-content">
-                            <h4>Love Nana ‘20</h4>
-                            <span>$150.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/drawings-01.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>New Green Jacket</h4>
-                            <span>$75.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/drawings-02.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Classic Dress</h4>
-                            <span>$45.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/drawings-03.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Spring Collection</h4>
-                            <span>$130.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/design-01.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>School Collection</h4>
-                            <span>$80.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/design-02.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Summer Cap</h4>
-                            <span>$12.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="item">
-                        <div class="thumb">
-                            <div class="hover-content">
-                                <ul>
-                                    <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <img src="assets/images/design-03.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Classic design</h4>
-                            <span>$30.00</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">></a>
-                            </li>
-                        </ul>
+                    <div class="section-heading">
+                        <h2>Sourires & Rigolades/ Smiles & Giggles</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Seasonal Designs/ Designs saisonniers</h2>
+                        <span>Check out all of our products.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <img src="assets/images/slate.jpg" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>Classic Spring</h4>
+                            <div class="d-flex justify-content-center">
+                                <stripe-buy-button
+                                buy-button-id="buy_btn_1SZXTuHDoZe9YrOuREf0VY6K"
+                                publishable-key="pk_live_51SZ5G9HDoZe9YrOuo4iEqlgBsIYHjUhHE6oBarQzLmnLS97KeniNYYm95ejp7qY0qFSl4vwCc0by1fMeMRzhJu5200D6rFkv1z"
+                                >
+                                </stripe-buy-button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -380,7 +320,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img src="assets/images/AP-FeLOGO-fulll.png" alt="hexashop ecommerce templatemo">
+                            <img class="logo-img" src="assets/images/LogoInvert.png" alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
                             <li><a href="#"></a></li>

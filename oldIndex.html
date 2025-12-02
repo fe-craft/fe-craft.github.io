@@ -57,9 +57,24 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <!-- <li class="scroll-to-section"><a href="drawing.html">Créations & Designs</a></li>
-                            <li class="scroll-to-section"><a href="drawing.html">Créations & Designs</a></li> -->
-                            <li class="scroll-to-section"><a href="contact.html">Contact/ Support</a></li>
+                            <li class="scroll-to-section"><a href="drawing.html">drawing</a></li>
+                            <li class="scroll-to-section"><a href="music.html">music</a></li>
+                            <li class="scroll-to-section"><a href="comingsoon.html">words</a></li>
+                            <!-- <li class="scroll-to-section"><a href="drawings.html">drawings</a></li> -->
+                            <li class="scroll-to-section"><a href="woodwork.html"><i class="fa fa-solid fa-hands"></i> woodwork</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Pages</a>
+                                <ul>
+                                    <!-- <li><a href="about.html">About Us</a></li>
+                                    <li><a href="products.html">Products</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li> -->
+                                    <li><a href="comingsoon.html">About Us</a></li>
+                                    <li><a href="comingsoon.html">Products</a></li>
+                                    <li><a href="comingsoon.html">Single Product</a></li>
+                                    <li><a href="comingsoon.html">Contact Us</a></li>
+                                </ul>
+                            </li>
                         </ul>    
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -75,114 +90,81 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
         <div class="container-fluid">
-            <div class="row" id="success-payment" style="display: none;">
-                <script>
-                    // Current date + 7 days
-                    const date = new Date();
-                    date.setDate(date.getDate() + 7);
-
-                    const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                    const monthsEN = ["January","February","March","April","May","June","July",
-                                        "August","September","October","November","December"];
-
-                    const daysFR = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
-                    const monthsFR = ["janvier","février","mars","avril","mai","juin","juillet",
-                                        "août","septembre","octobre","novembre","décembre"];
-
-                    const dayNameEN = daysEN[date.getDay()];
-                    const dayNameFR = daysFR[date.getDay()];
-
-                    const dayNumber = date.getDate();
-
-                    const monthNameEN = monthsEN[date.getMonth()];
-                    const monthNameFR = monthsFR[date.getMonth()];
-
-                    // English ordinal suffix (st, nd, rd, th)
-                    function ordinal(n) {
-                        return n + (["th","st","nd","rd"][(n % 100 >> 3) ^ 1 && n % 10] || "th");
-                    }
-
-                    const formattedDate = `${dayNameEN} the ${ordinal(dayNumber)} of ${monthNameEN}`;
-
-                    // French format: "lundi le 5 mars"
-                    const formattedDateFR = `${dayNameFR} le ${dayNumber} ${monthNameFR}`;
-                
-                </script>
-                <div class="col-md alert alert-success" style="margin: 15px;">
-                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Votre achat a été effectué avec succès. Nous visons à expédier les cartes dans un délai de 48 heures par courrier de deuxième classe. Si votre commande n’est pas arrivée d’ici la semaine prochaine, c’est-à-dire le <strong><script>document.write(formattedDateFR)</script></strong>, veuillez nous contacter.
-                    <hr>
-                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Your purchase was successfull, we aim to ship the cards within 48 hours by 2nd class courier. If your order hasn't arrived by next week, i.e. <strong><script>document.write(formattedDate)</script></strong> please contact us.
-                </div>
-            </div>
             <div class="row">
-                <div class="col-md alert alert-success" style="margin: 15px;">
-                    Toutes demandes, questions ou difficultés recevront une <strong>réponse</strong> dans un délai de <strong>48 heures</strong>
-                    ||
-                    Any queries difficulties or questions <strong>will</strong> be answered <strong>within 48 hours</strong>
-                    <br>
-                    <strong>fecraftings@gmail.com</strong>
-                </div>
-            </div>
-            <div class="row">
+                <!-- <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb services-img">
+                            <div class="inner-content" >
+                                <div class="flex-col">
+                                <p class="services-header p-2"><i>Services <br>& Products</i></p>
+                                <div class="services-main-border-button p-2">
+                                    <a href="comingsoon.html">Have a cheeky browse</a>
+                                </div>
+                            </div>
+                            </div>
+                            <img src="assets/images/monkeysmile.jpg" alt="">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-lg-6">
                     <div class="right-content">
                         <div class="row">
-                            <div class="col-md">
-                                <div class="right-first-image">
-                                    <div class="thumb" href="./drawing.html">
-                                        <div class="hover-content">
-                                            
-                                            <div class="inner">
-                                                <h4>Cartes</h4>
-                                                <p>cards</p>
-                                                <div class="main-border-button">
-                                                    <a href="./products.html">Shop</a>
-                                                </div>
-                                            </div>
-                                        
-                                        </div>
-                                        <img class="monkey-img" src="assets/images/card.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md">
+                            <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Art originale</h4>
-                                                <p>Original art</p>
+                                                <h4>drawings</h4>
+                                                <p>dessins</p>
                                                 <div class="main-border-button">
-                                                    <a href="./music.html">Shop</a>
+                                                    <!-- <a href="./drawings.html">Have a look</a> -->
+                                                    <a href="./drawing.html">Have a look</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="monkey-img" src="assets/images/prints.png">
+                                        <img class="monkey-img" src="assets/images/monkeysee.jpg">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Marchandises</h4>
-                                                <p>Merchandise</p>
+                                                <h4>music</h4>
+                                                <p>musique</p>
                                                 <div class="main-border-button">
-                                                    <a target="_blank" href="https://www.redbubble.com/people/fe-craft/shop">Visit RedBubble.com</a>
+                                                    <a href="./music.html">Have a listen</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="monkey-img" src="assets/images/redbubble.png">
+                                        <img class="monkey-img" src="assets/images/monkeyhear.jpg">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Commissions</h4>
-                                                <p>Aux commandes</p>
+                                                <h4>words</h4>
+                                                <p>mots</p>
+                                                <div class="main-border-button">
+                                                    <a href="./comingsoon.html">Have a read</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img class="monkey-img" src="assets/images/monkeyspeak.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>woodwork</h4>
+                                                <p>sculpture sur bois</p>
                                                 <div class="main-border-button">
                                                     <a href="./woodwork.html">Have a feel</a>
                                                     <!-- <a href="#woodwork">Have a feel</a> -->
@@ -302,7 +284,6 @@ https://templatemo.com/tm-571-hexashop
                         <ul>
                             <li><a href="https://www.facebook.com/people/F%C3%8B/61568069014024/"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="https://www.instagram.com/fe_dessin/"><i class="fa fa-instagram"></i></a></li>
-                            <!-- <li><a href="https://www.instagram.com/fe_dessin/"><i class="fa fa-redbubble"></i></a></li> -->
                             <li><a href="https://www.youtube.com/channel/UCADBia80hXv095DxFyzZzJw"><i class="fa fa-youtube"></i></a></li>
                             <li><a href="https://soundcloud.com/fe-musique/"><i class="fa fa-soundcloud"></i></a></li>
                             <li><a href="https://mattalec.bandcamp.com/"><i class="fa fa-play-circle"></i></a></li>
@@ -352,17 +333,6 @@ https://templatemo.com/tm-571-hexashop
                 
             });
         });
-
-        // Parse URL parameters
-        const params = new URLSearchParams(window.location.search);
-
-        // Check if ?success= is present (any value)
-        if (params.has('success')) {
-            const successDiv = document.getElementById('success-payment');
-            if (successDiv) {
-            successDiv.style.display = "block"; // or "flex" depending on your layout
-            }
-        }
 
     </script>
 
