@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Voronoi Kaleidoscope Hex Tiling</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+  }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+
+<script>
+// ======================================================
+// CONFIG
+// ======================================================
+const NUM_POINTS = 55;          // number of Voronoi cells
+const HEX_SCALE = 0.9;          // size of hex inside each cell
+const KALEIDO_SLICES = 6;       // number of mirror slices
+const DRIFT_SPEED = 0.2;
+const KALEIDO_ROT_SPEED = 0.001;
+
+// ======================================================
+// CANVAS SETUP
+// ======================================================
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+addEventListener("resize", resize);
+resize();
+
+// ======================================================
+// LOAD IMAGE
+// ======================================================
+const img = new Image();
+img.src = "./assets/images/3tile.png";
+img.onload = () => init();
+
+
+// ======================================================
+// VORONOI INITIALIZATION
+// ======================================================
+let points = [];
+
+function init() {
+  points = [];
+  for (let i = 0; i < NUM_POINTS; i++) {
+    points.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * DRIFT_SPEED,
+      vy: (Math.random() - 0.5) * DRIFT_SPEED
+    });
+  }
+  requestAnimationFrame(loop);
+}
+
+
+// ======================================================
+// VORONOI: FIND REGION FOR EACH PIXEL (simple brute)
+// ======================================================
+function getClosestPoint(px, py) {
+  let best = 0;
+  let bestDist = Infinity;
+
+  for (let i = 0; i < points.length; i++) {
+    const dx = px - points[i].x;
+    const dy = py - points[i].y;
+    const d = dx*dx + dy*dy;
+    if (d < bestDist) {
+      bestDist = d;
+      best = i;
+    }
+  }
+
+  return best;
+}
+
+
+// ======================================================
+// DRAW KALEIDOSCOPIC HEX
+// ======================================================
+function drawHexKaleidoscope(cx, cy, radius, rotation) {
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  // Clip to hexagon shape
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    let ang = Math.PI/6 + i * (Math.PI/3);
+    let x = radius * Math.cos(ang);
+    let y = radius * Math.sin(ang);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.clip();
+
+  // Kaleidoscope effect: repeated mirrored slices
+  const sliceAngle = Math.PI * 2 / KALEIDO_SLICES;
+
+  for (let s = 0; s < KALEIDO_SLICES; s++) {
+    ctx.save();
+    ctx.rotate(rotation + s * sliceAngle);
+
+    // Mirror every other slice
+    if (s % 2 === 1) ctx.scale(-1, 1);
+
+    ctx.drawImage(img, -radius, -radius, radius*2, radius*2);
+    ctx.restore();
+  }
+
+  ctx.restore();
+}
+
+
+// ======================================================
+// MAIN LOOP
+// ======================================================
+let t = 0;
+
+function loop() {
+  t += 1;
+
+  // Move Voronoi points
+  for (let p of points) {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  }
+
+  // Clear
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Render Voronoi: sample grid
+  const step = 55; // resolution of sampling; lower = smoother but heavier
+  for (let y = 0; y < canvas.height; y += step) {
+    for (let x = 0; x < canvas.width; x += step) {
+      const i = getClosestPoint(x, y);
+
+      const cellX = points[i].x;
+      const cellY = points[i].y;
+
+      const dist = Math.hypot(x - cellX, y - cellY);
+      const radius = dist * HEX_SCALE;
+
+      const rot = t * KALEIDO_ROT_SPEED + i * 0.1;
+
+      drawHexKaleidoscope(x, y, radius, rot);
+    }
+  }
+
+  requestAnimationFrame(loop);
+}
+
+</script>
+
+</body>
+</html>

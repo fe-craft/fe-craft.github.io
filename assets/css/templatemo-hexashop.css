@@ -269,7 +269,7 @@ header
   left: 0px;
   right: 0px;
   z-index: 100;
-  height: 100px;
+  height: 105px;
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
@@ -557,6 +557,18 @@ header
   color: #aaa;
 }
 
+.head-title {
+  /* background-color: rgba(0,0,0,0.5); */
+  /* text-shadow: -2px 0 black, 0 -2px black, 2px 0 black, 0 2px black,
+                   2px 2px black, -2px -2px black, -2px 2px black, 2px -2px black,
+                   4px 3px grey; */
+  text-shadow: 2px 2px black;
+  /* color: darkgrey; */
+  /* font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter";
+  font-weight: bold;
+  font-size: 20rem; */
+}
+
 @media (max-width: 1200px) {
   .header-area .main-nav .nav li {
     padding-left: 12px;
@@ -678,6 +690,13 @@ header
 banner
 --------------------------------------------- 
 */
+
+.bannerimg {
+  max-height:100%; 
+  max-width:100%;
+  justify-content: center;
+  /* margin-top: 110px; */
+}
 
 .main-banner {
   /* border-bottom: 3px dotted #eee; */
@@ -1608,11 +1627,12 @@ Products Page
 
 .page-heading {
   margin-top: 160px;
-  margin-bottom: 30px;
-  background-image: url(../images/monkeyhear.jpg);
+  overflow-x: hidden;
+  /* margin-bottom: 30px; */
+  background-image: url(../images/3tile.png);
   background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: 10em;
+  background-repeat: repeat;
 }
 
 .hover-fade:hover {
@@ -1621,7 +1641,7 @@ Products Page
 }
 
 .page-heading .inner-content {
-  padding: 150px 0px;
+  padding: 80px 0px;
   text-align: center;
 }
 

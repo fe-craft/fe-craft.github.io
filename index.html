@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <link rel="icon" type="image/png" href="assets/images/AP-LOGO-ROUND.png"/>
+<head>
+    <link rel="icon" type="image/png" href="assets/images/AP-LOGO-ROUND.png" />
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
 
     <title>Fë Craft</title>
 
@@ -21,16 +22,16 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/pure-snow.js" defer></script>
-<!--
+    <!--
 
 TemplateMo 571 Hexashop
 
 https://templatemo.com/tm-571-hexashop
 
 -->
-    </head>
-    
-    <body>
+</head>
+
+<body>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -39,14 +40,14 @@ https://templatemo.com/tm-571-hexashop
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
+        <div id="snow" data-count="100"></div>
         <div class="container">
-            <div id="snow" data-count="100"></div>
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
@@ -63,7 +64,9 @@ https://templatemo.com/tm-571-hexashop
                             <!-- <li class="scroll-to-section"><a href="drawing.html">Créations & Designs</a></li>
                             <li class="scroll-to-section"><a href="drawing.html">Créations & Designs</a></li> -->
                             <li class="scroll-to-section"><a href="contact.html">Contact/ Support</a></li>
-                        </ul>    
+                            <li><a href="https://www.facebook.com/people/F%C3%8B/61568069014024/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/fe_dessin/"><i class="fa fa-instagram"></i></a></li>                            
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -78,19 +81,20 @@ https://templatemo.com/tm-571-hexashop
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner" id="top">
         <div class="container-fluid">
+            <div class="container" style="margin-top: -50px">
             <div class="row" id="success-payment" style="display: none;">
                 <script>
                     // Current date + 7 days
                     const date = new Date();
                     date.setDate(date.getDate() + 7);
 
-                    const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                    const monthsEN = ["January","February","March","April","May","June","July",
-                                        "August","September","October","November","December"];
+                    const daysEN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    const monthsEN = ["January", "February", "March", "April", "May", "June", "July",
+                        "August", "September", "October", "November", "December"];
 
-                    const daysFR = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
-                    const monthsFR = ["janvier","février","mars","avril","mai","juin","juillet",
-                                        "août","septembre","octobre","novembre","décembre"];
+                    const daysFR = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+                    const monthsFR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
+                        "août", "septembre", "octobre", "novembre", "décembre"];
 
                     const dayNameEN = daysEN[date.getDay()];
                     const dayNameFR = daysFR[date.getDay()];
@@ -102,108 +106,121 @@ https://templatemo.com/tm-571-hexashop
 
                     // English ordinal suffix (st, nd, rd, th)
                     function ordinal(n) {
-                        return n + (["th","st","nd","rd"][(n % 100 >> 3) ^ 1 && n % 10] || "th");
+                        return n + (["th", "st", "nd", "rd"][(n % 100 >> 3) ^ 1 && n % 10] || "th");
                     }
 
                     const formattedDate = `${dayNameEN} the ${ordinal(dayNumber)} of ${monthNameEN}`;
 
                     // French format: "lundi le 5 mars"
                     const formattedDateFR = `${dayNameFR} le ${dayNumber} ${monthNameFR}`;
-                
+
                 </script>
                 <div class="col-md alert alert-success" style="margin: 15px;">
-                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Votre achat a été effectué avec succès. Nous visons à expédier les cartes dans un délai de 48 heures par courrier de deuxième classe. Si votre commande n’est pas arrivée d’ici la semaine prochaine, c’est-à-dire le <strong><script>document.write(formattedDateFR)</script></strong>, veuillez nous contacter.
+                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Votre achat a été effectué avec succès.
+                    Nous visons à expédier les cartes dans un délai de 48 heures par courrier de deuxième classe. Si
+                    votre commande n'est pas arrivée d'ici la semaine prochaine, c'est-à-dire le <strong>
+                        <script>document.write(formattedDateFR)</script>
+                    </strong>, veuillez nous contacter.
                     <hr>
-                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Your purchase was successfull, we aim to ship the cards within 48 hours by 2nd class courier. If your order hasn't arrived by next week, i.e. <strong><script>document.write(formattedDate)</script></strong> please contact us.
+                    <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;Your purchase was successfull, we aim to
+                    ship the cards within 48 hours by 2nd class courier. If your order hasn't arrived by next week, i.e.
+                    <strong>
+                        <script>document.write(formattedDate)</script>
+                    </strong> please contact us.
                 </div>
             </div>
             <div class="row">
-                <div class="col-md alert alert-success" style="margin: 15px;">
-                    Toutes demandes, questions ou difficultés recevront une <strong>réponse</strong> dans un délai de <strong>48 heures</strong>
+                <div class="col-md alert alert-success">
+                    Toutes demandes, questions ou difficultés recevront une <strong>réponse</strong> dans un délai de
+                    <strong>48 heures</strong>
                     ||
-                    Any queries difficulties or questions <strong>will</strong> be answered <strong>within 48 hours</strong>
-                    <br>
+                    Any queries difficulties or questions <strong>will</strong> be answered <strong>within 48
+                        hours</strong>
+                    ||
                     <strong>fecraftings@gmail.com</strong>
                 </div>
             </div>
+        </div>
             <div class="row">
-                    <div class="right-content">
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="right-first-image">
-                                    <div class="thumb" href="./drawing.html">
-                                        <div class="hover-content">
-                                            
-                                            <div class="inner">
-                                                <h4>Cartes</h4>
-                                                <p>cards</p>
-                                                <div class="main-border-button">
-                                                    <a href="./products.html">Shop</a>
-                                                </div>
-                                            </div>
-                                        
-                                        </div>
-                                        <img class="monkey-img" src="assets/images/card.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Art originale</h4>
-                                                <p>Original art</p>
-                                                <div class="main-border-button">
-                                                    <a href="./music.html">Shop</a>
-                                                </div>
+                <div class="right-content">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="right-first-image">
+                                <div class="thumb" href="./drawing.html">
+                                    <div class="hover-content">
+
+                                        <div class="inner">
+                                            <h4>Cartes</h4>
+                                            <p>cards</p>
+                                            <div class="main-border-button">
+                                                <a href="./products.html">Shop</a>
                                             </div>
                                         </div>
-                                        <img class="monkey-img" src="assets/images/prints.png">
+
                                     </div>
+                                    <img class="monkey-img" src="assets/images/card.png">
                                 </div>
                             </div>
-                            <div class="col-md">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Marchandises</h4>
-                                                <p>Merchandise</p>
-                                                <div class="main-border-button">
-                                                    <a target="_blank" href="https://www.redbubble.com/people/fe-craft/shop">Visit RedBubble.com</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="monkey-img" src="assets/images/redbubble.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Commissions</h4>
-                                                <p>Aux commandes</p>
-                                                <div class="main-border-button">
-                                                    <a href="./woodwork.html">Have a feel</a>
-                                                    <!-- <a href="#woodwork">Have a feel</a> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="monkey-img" src="assets/images/monkey.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            
                         </div>
+                        <div class="col-md">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Art originale</h4>
+                                            <p>Original art</p>
+                                            <div class="main-border-button">
+                                                <a href="./music.html">Shop</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="monkey-img" src="assets/images/prints.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Marchandises</h4>
+                                            <p>Merchandise</p>
+                                            <div class="main-border-button">
+                                                <a target="_blank"
+                                                    href="https://www.redbubble.com/people/fe-craft/shop">Visit
+                                                    RedBubble.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="monkey-img" src="assets/images/merch.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Aux commandes</h4>
+                                            <p>Commissions</p>
+                                            <div class="main-border-button">
+                                                <a href="./commission.html">Faire une demande</a>
+                                                <!-- <a href="#woodwork">Have a feel</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="monkey-img" src="assets/images/comission.png">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+    </div>
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
@@ -211,23 +228,27 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-3">
                     <div class="first-item">
                         <div class="logo">
-                            <img class="logo-img" src="assets/images/LogoInvert.png" alt="hexashop ecommerce templatemo">
+                            <img class="logo-img" src="assets/images/LogoInvert.png"
+                                alt="hexashop ecommerce templatemo">
                         </div>
                         <ul>
                             <!-- <li><a href="#"></a></li> -->
-                            <li><a href="#">fecraftings@gmail.com</a></li>
+                            <li><a href="mailto:fecraftings@gmail.com">fecraftings@gmail.com</a></li>
+                            <li><a href="./oldindex.html">V1.0.1 fe-craft.com</a></li>
                             <!--  -->
                         </ul>
                     </div>
                 </div>
-                <!-- <div class="col-lg-3">
-                    <h4>Find us on</h4>
+                <!-- <div class="col float-right">
+                    currently running V2.01 -->
+                    <!-- <h4>Find us on</h4>
                     <ul>
                         <li><a href="#">Youtube</a></li>
                         <li><a href="#">Bandcamp</a></li>
                         <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div> -->
+                    </ul> -->
+                <!-- </div> -->
+                
                 <!-- <div class="col-lg-3">
                     <h4>Useful Links</h4>
                     <ul>
@@ -247,15 +268,18 @@ https://templatemo.com/tm-571-hexashop
                     </ul>
                 </div> -->
                 <div class="col-lg-12">
+                    <div class="float-right text-secondary">currently running fe-craft.com V2.01 updated 06/12/2025</div>
                     <div class="under-footer">
                         <!-- <p> 
                         
                         </p> -->
                         <ul>
-                            <li><a href="https://www.facebook.com/people/F%C3%8B/61568069014024/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.facebook.com/people/F%C3%8B/61568069014024/"><i
+                                        class="fa fa-facebook"></i></a></li>
                             <li><a href="https://www.instagram.com/fe_dessin/"><i class="fa fa-instagram"></i></a></li>
                             <!-- <li><a href="https://www.instagram.com/fe_dessin/"><i class="fa fa-redbubble"></i></a></li> -->
-                            <li><a href="https://www.youtube.com/channel/UCADBia80hXv095DxFyzZzJw"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCADBia80hXv095DxFyzZzJw"><i
+                                        class="fa fa-youtube"></i></a></li>
                             <li><a href="https://soundcloud.com/fe-musique/"><i class="fa fa-soundcloud"></i></a></li>
                             <li><a href="https://mattalec.bandcamp.com/"><i class="fa fa-play-circle"></i></a></li>
                             <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
@@ -265,7 +289,7 @@ https://templatemo.com/tm-571-hexashop
             </div>
         </div>
     </footer>
-    
+
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
@@ -281,27 +305,27 @@ https://templatemo.com/tm-571-hexashop
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    <script src="assets/js/slick.js"></script> 
-    <script src="assets/js/lightbox.js"></script> 
-    <script src="assets/js/isotope.js"></script> 
-    
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/isotope.js"></script>
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
     <script>
 
-        $(function() {
+        $(function () {
             var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
             });
         });
 
@@ -312,11 +336,12 @@ https://templatemo.com/tm-571-hexashop
         if (params.has('success')) {
             const successDiv = document.getElementById('success-payment');
             if (successDiv) {
-            successDiv.style.display = "block"; // or "flex" depending on your layout
+                successDiv.style.display = "block"; // or "flex" depending on your layout
             }
         }
 
     </script>
 
-  </body>
+</body>
+
 </html>
