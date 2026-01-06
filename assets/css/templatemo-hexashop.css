@@ -261,7 +261,7 @@ header
 }
 
 .header-area {
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px dotted rgba(0,0,0,0);
   box-shadow: none;
   background-color: #fff;
   position: absolute;
@@ -1143,7 +1143,7 @@ design
 #design {
   padding-top: 90px;
   padding-bottom: 90px;
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px dotted rgba(0,0,0,0);
 }
 
 #design .section-heading {
@@ -1304,7 +1304,7 @@ Explore
 #explore {
   padding-top: 90px;
   padding-bottom: 90px;
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px dotted rgba(0,0,0,0);
 }
 
 #explore .left-content {
@@ -1408,7 +1408,7 @@ Social
 #social {
   margin-top: 90px;
   padding-bottom: 90px;
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px dotted rgba(0,0,0,0);
 }
 
 #social .col-2 {
@@ -2083,7 +2083,7 @@ About Us Page
 }
 
 .about-us .right-content ul {
-  border-top: 3px dotted #eee;
+  border-top: 3px dotted rgba(0,0,0,0);
   margin-top: 30px;
   padding-top: 30px;
 }
@@ -2114,7 +2114,7 @@ About Us Page
   margin-top: 100px;
   padding-top: 90px;
   padding-bottom: 90px;
-  border-top: 3px dotted #eee;
+  border-top: 3px dotted rgba(0,0,0,0);
 }
 
 .our-team .section-heading {
@@ -2205,8 +2205,8 @@ About Us Page
 .our-services {
   padding-top: 90px;
   padding-bottom: 90px;
-  border-top: 3px dotted #eee;
-  border-bottom: 3px dotted #eee;
+  border-top: 3px dotted rgba(0,0,0,0);
+  border-bottom: 3px dotted rgba(0,0,0,0);
 }
 
 .our-services .section-heading {
@@ -2250,7 +2250,7 @@ contact Us Page
 
 .contact-us {
   margin-top: 90px;
-  border-bottom: 3px dotted #eee;
+  border-bottom: 3px dotted rgba(0,0,0,0);
   padding-bottom: 90px;
 }
 
