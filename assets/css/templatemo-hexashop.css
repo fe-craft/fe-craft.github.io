@@ -1629,7 +1629,7 @@ Products Page
   margin-top: 160px;
   overflow-x: hidden;
   /* margin-bottom: 30px; */
-  background-image: url(../images/3tile.png);
+  background: url(../images/3tile.png);
   background-position: center center;
   background-size: 10em;
   background-repeat: repeat;
